@@ -1,7 +1,7 @@
-import { CoffeeList } from "./components/CoffeeList";
-import { Introduction } from "./components/Introduction";
+import { CoffeeList } from './components/CoffeeList'
+import { Introduction } from './components/Introduction'
 
-export function Home(){
+export function Home() {
   return (
     <>
       <Introduction />

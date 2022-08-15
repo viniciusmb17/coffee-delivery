@@ -1,5 +1,3 @@
-export function CoffeeList(){
-  return (
-    <div>CoffeeList</div>
-  )
+export function CoffeeList() {
+  return <div>CoffeeList</div>
 }

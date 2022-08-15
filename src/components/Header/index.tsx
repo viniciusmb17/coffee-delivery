@@ -1,5 +1,5 @@
-export function Header(){
-  return(
+export function Header() {
+  return (
     <div>
       <span>Coffee Delivery</span>
       <span>Localização</span>

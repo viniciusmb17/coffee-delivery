@@ -1,9 +1,15 @@
+import { HeaderContainer } from './style'
+
+import logoCoffeeDelivery from '../../assets/logo-coffee-delivery.svg'
+
 export function Header() {
   return (
-    <div>
-      <span>Coffee Delivery</span>
-      <span>Localização</span>
-      <span>Carrinho de compras</span>
-    </div>
+    <HeaderContainer>
+      <img src={logoCoffeeDelivery} alt="" />
+      <nav>
+        <span>Localização</span>
+        <span>Carrinho de compras</span>
+      </nav>
+    </HeaderContainer>
   )
 }

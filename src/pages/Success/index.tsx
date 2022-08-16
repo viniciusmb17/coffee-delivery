@@ -1,3 +1,7 @@
 export function Success() {
-  return <div>Success</div>
+  return (
+    <div>
+      <h1>Success</h1>
+    </div>
+  )
 }

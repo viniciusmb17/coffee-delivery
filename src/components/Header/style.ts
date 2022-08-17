@@ -12,6 +12,7 @@ export const HeaderContainer = styled.header`
   align-items: center;
   justify-content: space-between;
   padding: 2rem 10rem;
+  height: 2.375rem;
   line-height: 130%;
 
   font-family: 'Baloo 2', cursive;
@@ -35,8 +36,11 @@ export const HeaderContainer = styled.header`
 export const ActionsContainer = styled.div`
   display: flex;
   flex-direction: row;
-  justify-content: space-between;
+  justify-content: flex-end;
+  align-items: center;
   gap: 12px;
+  max-width: fit-content;
+  width: 100%;
 `
 
 export const LocationContainer = styled.div`
@@ -45,7 +49,7 @@ export const LocationContainer = styled.div`
   flex-direction: row;
   align-items: center;
   justify-content: space-between;
-  width: 100%;
+  width: fit-content;
 
   font-family: 'Roboto', sans-serif;
   font-style: normal;

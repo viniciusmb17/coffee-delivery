@@ -9,7 +9,7 @@ export const HeaderContainer = styled.header`
   background: ${(props) => props.theme.background};
   display: flex;
   flex-direction: row;
-  padding: 2rem 10rem;
+  padding: 4rem 10rem;
   height: 2.375rem;
   line-height: 130%;
 

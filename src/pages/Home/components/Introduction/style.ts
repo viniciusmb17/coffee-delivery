@@ -47,15 +47,51 @@ export const IntroTitle = styled.div`
   }
 `
 
-export const IntroItems = styled.div``
+export const IntroItems = styled.div`
+  display: grid;
+  grid-template-columns: auto auto;
+  column-gap: 2.5rem;
+  row-gap: 1.25rem;
+
+  width: 35.4375rem;
+  height: 5.25rem;
+
+  align-items: center;
+  span {
+    color: ${(props) => props.theme['base-text']};
+  }
+`
 
 export const ItemContainer = styled.div`
   display: flex;
   flex-direction: row;
+  gap: 0.75rem;
+  align-items: center;
 `
 
-const BaseIcons = styled.div``
-export const CartIcon = styled(BaseIcons)``
-export const TimerIcon = styled(BaseIcons)``
-export const PackageIcon = styled(BaseIcons)``
-export const CoffeeIcon = styled(BaseIcons)``
+const BaseIcons = styled.div`
+  display: flex;
+  flex-direction: row;
+  justify-items: center;
+  align-items: center;
+  padding: 0.5rem;
+  gap: 0.5rem;
+
+  width: 2rem;
+  height: 2rem;
+
+  border-radius: 1000px;
+  color: ${(props) => props.theme.background};
+`
+export const CartIcon = styled(BaseIcons)`
+  background: ${(props) => props.theme['yellow-dark']};
+`
+export const TimerIcon = styled(BaseIcons)`
+  background: ${(props) => props.theme.yellow};
+`
+export const PackageIcon = styled(BaseIcons)`
+  background: ${(props) => props.theme['base-text']};
+`
+export const CoffeeIcon = styled(BaseIcons)`
+  background: ${(props) => props.theme.purple};
+`

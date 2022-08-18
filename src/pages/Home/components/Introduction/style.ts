@@ -7,18 +7,20 @@ export const IntroductionContainer = styled.div`
   align-items: center;
   justify-content: center;
 
-  max-height: 34rem;
-  height: 100%;
-  gap: 1rem;
+  height: 34rem;
+  gap: 3.5rem;
 
-  /* background-image: url(${IntroBackground}); */
+  background-image: url(${IntroBackground});
+  background-repeat: no-repeat;
+  background-position: center;
 `
-
 export const IntroSection = styled.section`
   max-width: 36.75rem;
   width: 100%;
 
   img {
+    width: 29.75rem;
+    height: 22.5rem;
   }
 `
 

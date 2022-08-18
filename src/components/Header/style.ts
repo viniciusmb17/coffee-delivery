@@ -9,8 +9,6 @@ export const HeaderContainer = styled.header`
   background: ${(props) => props.theme.background};
   display: flex;
   flex-direction: row;
-  align-items: center;
-  justify-content: space-between;
   padding: 2rem 10rem;
   height: 2.375rem;
   line-height: 130%;
@@ -28,7 +26,8 @@ export const HeaderContainer = styled.header`
     display: flex;
     flex-direction: row;
     align-items: center;
-    justify-content: space-between;
+    justify-content: center;
+    gap: 51.25rem;
     max-width: 90rem;
     width: 100%;
   }

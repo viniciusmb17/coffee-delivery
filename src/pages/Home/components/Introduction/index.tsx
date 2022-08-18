@@ -7,7 +7,7 @@ import {
   TimerIcon,
   PackageIcon,
   CoffeeIcon,
-  IntroImage,
+  IntroSection,
 } from './style'
 import IntroCoffeDelivery from '../../../../assets/intro-coffee-delivery.png'
 import { Coffee, Package, ShoppingCart, Timer } from 'phosphor-react'
@@ -15,13 +15,13 @@ import { Coffee, Package, ShoppingCart, Timer } from 'phosphor-react'
 export function Introduction() {
   return (
     <IntroductionContainer>
-      <div>
+      <IntroSection>
         <IntroTitle>
           <h1>Encontre o café perfeito para qualquer hora do dia</h1>
-          <h3>
+          <h2>
             Com o Coffee Delivery você recebe seu café onde estiver, a qualquer
             hora
-          </h3>
+          </h2>
         </IntroTitle>
         <IntroItems>
           <ItemContainer>
@@ -49,10 +49,10 @@ export function Introduction() {
             <span>O café chega fresquinho até você</span>
           </ItemContainer>
         </IntroItems>
-      </div>
-      <IntroImage>
+      </IntroSection>
+      <IntroSection>
         <img src={IntroCoffeDelivery} alt="" />
-      </IntroImage>
+      </IntroSection>
     </IntroductionContainer>
   )
 }

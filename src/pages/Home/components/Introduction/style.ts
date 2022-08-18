@@ -11,14 +11,16 @@ export const IntroductionContainer = styled.div`
   height: 100%;
   gap: 1rem;
 
-  div {
-    max-width: 36.75rem;
-    width: 100%;
-  }
   /* background-image: url(${IntroBackground}); */
 `
 
-export const IntroImage = styled.div``
+export const IntroSection = styled.section`
+  max-width: 36.75rem;
+  width: 100%;
+
+  img {
+  }
+`
 
 export const IntroTitle = styled.div`
   display: flex;
@@ -26,6 +28,23 @@ export const IntroTitle = styled.div`
   align-items: flex-start;
   padding: 0;
   gap: 1rem;
+  margin-bottom: 4.125rem;
+
+  h1 {
+    font-family: 'Baloo 2', cursive;
+    font-style: normal;
+    font-weight: 800;
+    font-size: 3rem;
+    line-height: 130%;
+    color: ${(props) => props.theme['base-title']};
+  }
+  h2 {
+    font-weight: 400;
+    font-size: 1.25rem;
+    font-stretch: 100;
+    line-height: 130%;
+    color: ${(props) => props.theme['base-subtitle']};
+  }
 `
 
 export const IntroItems = styled.div``

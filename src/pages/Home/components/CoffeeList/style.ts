@@ -16,6 +16,7 @@ export const CoffeeListContainer = styled.section`
 export const FilteredTags = styled.div`
   position: absolute;
   display: flex;
+  height: 1.5625rem;
   flex-direction: row;
   padding: 0;
   gap: 0.5rem;

@@ -27,7 +27,9 @@ export const FilteredTags = styled.div`
 export const Tag = styled.div`
   display: flex;
   flex-direction: row;
+  justify-content: center;
   align-items: center;
+  width: fit-content;
   padding: 0.375rem 0.75rem;
   gap: 0.5rem;
 
@@ -42,6 +44,8 @@ export const Tag = styled.div`
 
 export const CoffeeListCards = styled.div`
   position: absolute;
+  display: flex;
+  gap: 2rem;
   width: 70rem;
   left: calc(50% - 74rem / 2);
   margin-top: 8rem;

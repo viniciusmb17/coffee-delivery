@@ -9,7 +9,7 @@ export const HeaderContainer = styled.header`
   background: ${(props) => props.theme.background};
   display: flex;
   flex-direction: row;
-  padding: 2rem 11rem;
+  padding: 2rem 12.75rem;
   line-height: 130%;
 
   font-family: 'Baloo 2', cursive;

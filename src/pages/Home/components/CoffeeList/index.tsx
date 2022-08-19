@@ -1,10 +1,22 @@
 import { CoffeeCard } from './components/CoffeeCard'
-import { CoffeeListCards, CoffeeListContainer } from './style'
+import {
+  CoffeeListCards,
+  CoffeeListContainer,
+  FilteredTags,
+  Tag,
+} from './style'
 
 export function CoffeeList() {
   return (
     <CoffeeListContainer>
       <h1>Nossos cafés</h1>
+      <FilteredTags>
+        <Tag>TRADICIONAL</Tag>
+        <Tag>ESPECIAL</Tag>
+        <Tag>COM LEITE</Tag>
+        <Tag>ALCOÓLICO</Tag>
+        <Tag>GELADO</Tag>
+      </FilteredTags>
       <CoffeeListCards>
         <CoffeeCard />
         <CoffeeCard />

@@ -8,7 +8,6 @@ export const IntroductionContainer = styled.div`
   justify-content: center;
 
   height: 34rem;
-  gap: 3.5rem;
 
   background-image: url(${IntroBackground});
   background-repeat: no-repeat;
@@ -21,6 +20,7 @@ export const IntroSection = styled.section`
   img {
     width: 29.75rem;
     height: 22.5rem;
+    margin-left: 3.5rem;
   }
 `
 

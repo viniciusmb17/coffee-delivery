@@ -22,6 +22,11 @@ export function CoffeeList() {
         <CoffeeCard />
         <CoffeeCard />
         <CoffeeCard />
+        <CoffeeCard />
+        <CoffeeCard />
+        <CoffeeCard />
+        <CoffeeCard />
+        <CoffeeCard />
       </CoffeeListCards>
     </CoffeeListContainer>
   )

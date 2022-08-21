@@ -2,6 +2,7 @@ import styled from 'styled-components'
 
 export const CoffeeListContainer = styled.section`
   line-height: 130%;
+  margin-top: 2rem;
 
   h1 {
     position: absolute;
@@ -44,9 +45,11 @@ export const Tag = styled.div`
 
 export const CoffeeListCards = styled.div`
   position: absolute;
-  display: flex;
-  gap: 2rem;
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 2.5rem;
   width: 70rem;
   left: calc(50% - 74rem / 2);
   margin-top: 8rem;
+  padding-bottom: 9.75rem;
 `

@@ -7,16 +7,21 @@ import {
   CoffeeCardContainer,
   CoffeeCardDescription,
   InputQuantity,
+  TagsContainer,
 } from './style'
 import Expresso from '../../../../../../assets/coffees/expresso.png'
-import { Tag } from '../../style'
+
 import { Minus, Plus, ShoppingCart } from 'phosphor-react'
+import { Tag } from '../../../../../../components/Tag'
 
 export function CoffeeCard() {
   return (
     <CoffeeCardContainer>
       <img src={Expresso} alt="" />
-      <Tag>TRADICIONAL</Tag>
+      <TagsContainer>
+        <Tag variant="filled">TRADICIONAL</Tag>
+        <Tag variant="filled">QUENTE</Tag>
+      </TagsContainer>
       <h2>Expresso Tradicional</h2>
       <CoffeeCardDescription>
         O tradicional café feito com água quente e grãos moídos

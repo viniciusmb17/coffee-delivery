@@ -129,3 +129,12 @@ export const CardBuyCart = styled.div`
   background: ${(props) => props.theme['yellow-light']};
   color: ${(props) => props.theme['yellow-dark']}; */
 `
+
+export const TagsContainer = styled.div`
+  display: flex;
+  height: 1.5625rem;
+  flex-direction: row;
+  padding: 0;
+  gap: 0.25rem;
+  align-items: center;
+`

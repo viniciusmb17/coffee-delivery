@@ -1,10 +1,6 @@
+import { Tag } from '../../../../components/Tag'
 import { CoffeeCard } from './components/CoffeeCard'
-import {
-  CoffeeListCards,
-  CoffeeListContainer,
-  FilteredTags,
-  Tag,
-} from './style'
+import { CoffeeListCards, CoffeeListContainer, FilteredTags } from './style'
 
 export function CoffeeList() {
   return (

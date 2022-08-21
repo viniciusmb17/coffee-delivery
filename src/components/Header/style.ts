@@ -11,6 +11,7 @@ export const HeaderContainer = styled.header`
   flex-direction: row;
   padding: 2rem 12.75rem;
   line-height: 130%;
+  z-index: 10;
 
   font-family: 'Baloo 2', cursive;
   font-weight: 700;

@@ -3,6 +3,7 @@ import {
   CardBuyActions,
   CardBuyCart,
   CardBuyValue,
+  CardBuyValueContainer,
   CoffeeCardBuy,
   CoffeeCardContainer,
   CoffeeCardDescription,
@@ -27,18 +28,18 @@ export function CoffeeCard() {
         O tradicional café feito com água quente e grãos moídos
       </CoffeeCardDescription>
       <CoffeeCardBuy>
-        <div>
+        <CardBuyValueContainer>
           <span>R$</span>
           <CardBuyValue>9,90</CardBuyValue>
-        </div>
+        </CardBuyValueContainer>
         <CardBuyActions>
           <BuyCounter>
             <Minus size={'0.875rem'} weight={'bold'} />
             <InputQuantity value={1} />
             <Plus size={'0.875rem'} weight={'bold'} />
           </BuyCounter>
-          <CardBuyCart>
-            <ShoppingCart />
+          <CardBuyCart onClick={() => alert('Add to cart')}>
+            <ShoppingCart size={22} weight="fill" />
           </CardBuyCart>
         </CardBuyActions>
       </CoffeeCardBuy>

@@ -60,11 +60,10 @@ export const CoffeeCardBuy = styled.div`
     line-height: 130%;
     color: ${(props) => props.theme['base-text']};
   }
-
-  div {
-    display: flex;
-    align-items: baseline;
-  }
+`
+export const CardBuyValueContainer = styled.div`
+  display: flex;
+  align-items: baseline;
 `
 export const CardBuyValue = styled.div`
   font-family: 'Baloo 2', cursive;
@@ -75,7 +74,14 @@ export const CardBuyValue = styled.div`
   color: ${(props) => props.theme['base-text']};
   align-items: bottom;
 `
-export const CardBuyActions = styled.div``
+export const CardBuyActions = styled.div`
+  display: flex;
+  flex-direction: row;
+  gap: 0.5rem;
+  align-content: center;
+  height: 2.375rem;
+`
+
 export const BuyCounter = styled.div`
   display: flex;
   flex-direction: row;
@@ -114,8 +120,9 @@ export const InputQuantity = styled.input.attrs((props) => ({
   border: 0;
   background-color: inherit;
 `
-export const CardBuyCart = styled.div`
-  /* display: flex;
+export const CardBuyCart = styled.button`
+  border: 0;
+  display: flex;
   flex-direction: row;
   align-items: center;
   justify-content: center;
@@ -126,8 +133,10 @@ export const CardBuyCart = styled.div`
   height: 100%;
   border-radius: 6px;
 
-  background: ${(props) => props.theme['yellow-light']};
-  color: ${(props) => props.theme['yellow-dark']}; */
+  background: ${(props) => props.theme['purple-dark']};
+  color: ${(props) => props.theme['base-card']};
+
+  cursor: pointer;
 `
 
 export const TagsContainer = styled.div`

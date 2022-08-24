@@ -6,6 +6,8 @@ import {
   CheckoutSummary,
   CheckoutTotal,
   CheckoutItems,
+  PaymentCards,
+  PaymentCard,
 } from './style'
 
 export function Checkout() {
@@ -39,6 +41,17 @@ export function Checkout() {
               O pagamento é feito na entrega. Escolha a forma que deseja pagar
             </span>
           </ArticleTitles>
+          <PaymentCards>
+            <PaymentCard>
+              <span>CARTÃO DE CRÉDITO</span>
+            </PaymentCard>
+            <PaymentCard>
+              <span>CARTÃO DE DÉBITO</span>
+            </PaymentCard>
+            <PaymentCard>
+              <span>DINHEIRO</span>
+            </PaymentCard>
+          </PaymentCards>
         </PaymentArticle>
       </section>
       <aside>

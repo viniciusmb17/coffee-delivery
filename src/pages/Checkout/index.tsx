@@ -1,3 +1,4 @@
+import { CurrencyDollar, MapPinLine } from 'phosphor-react'
 import {
   CheckoutContainer,
   ShippingArticle,
@@ -17,8 +18,11 @@ export function Checkout() {
         <h1>Complete seu pedido</h1>
         <ShippingArticle>
           <ArticleTitles>
-            <h2>Endereço de Entrega</h2>
-            <span>Informe o endereço onde deseja receber seu pedido</span>
+            <MapPinLine size={22} />
+            <div>
+              <h2>Endereço de Entrega</h2>
+              <span>Informe o endereço onde deseja receber seu pedido</span>
+            </div>
           </ArticleTitles>
           <form>
             <input type="text" name="cep" placeholder="CEP" />
@@ -36,10 +40,13 @@ export function Checkout() {
         </ShippingArticle>
         <PaymentArticle>
           <ArticleTitles>
-            <h2>Pagamento</h2>
-            <span>
-              O pagamento é feito na entrega. Escolha a forma que deseja pagar
-            </span>
+            <CurrencyDollar size={22} />
+            <div>
+              <h2>Pagamento</h2>
+              <span>
+                O pagamento é feito na entrega. Escolha a forma que deseja pagar
+              </span>
+            </div>
           </ArticleTitles>
           <PaymentCards>
             <PaymentCard>

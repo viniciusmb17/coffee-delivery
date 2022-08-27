@@ -1,13 +1,97 @@
 import styled from 'styled-components'
 
-export const CheckoutContainer = styled.div``
+export const CheckoutContainer = styled.div`
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  gap: 2rem;
 
-export const ShippingArticle = styled.article``
-export const PaymentArticle = styled.article``
+  h1 {
+    align-items: center;
+    font-family: 'Baloo 2';
+    font-style: normal;
+    font-weight: 700;
+    font-size: 1.125rem;
+    line-height: 130%;
+    margin-bottom: 0.9375rem;
+  }
+
+  section {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    width: 40rem;
+    height: 36.9375rem;
+
+    padding: 0;
+    gap: 0.75rem;
+  }
+
+  article {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    padding: 2.5rem;
+    background-color: ${(props) => props.theme['base-card']};
+
+    gap: 2rem;
+    width: 40rem;
+    border-radius: 6px;
+
+    h2,
+    span {
+      font-family: 'Roboto', sans-serif;
+      font-style: normal;
+      font-weight: 400;
+      line-height: 130%;
+      display: flex;
+      align-items: center;
+    }
+
+    h2 {
+      color: ${(props) => props.theme['base-subtitle']};
+      font-size: 1rem;
+    }
+
+    span {
+      color: ${(props) => props.theme['base-text']};
+      font-size: 0.875rem;
+    }
+  }
+`
+
+export const ShippingArticle = styled.article`
+  height: 23.25rem;
+  color: ${(props) => props.theme['yellow-dark']};
+`
+export const PaymentArticle = styled.article`
+  height: 12.9375rem;
+  color: ${(props) => props.theme.purple};
+`
+
 export const PaymentCards = styled.div``
 export const PaymentCard = styled.div``
-export const ArticleTitles = styled.div``
+export const ArticleTitles = styled.div`
+  display: flex;
+  flex-direction: row;
+  align-items: flex-start;
+  padding: 0;
+  gap: 0.5rem;
 
-export const CheckoutSummary = styled.div``
+  width: 35rem;
+  height: 2.75rem;
+`
+
+export const CheckoutSummary = styled.div`
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  padding: 2.5rem;
+  gap: 1.5rem;
+  width: 28rem;
+  height: 31.125rem;
+  border-radius: 6px 44px;
+  background-color: ${(props) => props.theme['base-card']};
+`
 export const CheckoutItems = styled.div``
 export const CheckoutTotal = styled.div``

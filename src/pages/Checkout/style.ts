@@ -113,8 +113,36 @@ export const PaymentArticle = styled.article`
   color: ${(props) => props.theme.purple};
 `
 
-export const PaymentCards = styled.div``
-export const PaymentCard = styled.div``
+export const PaymentCards = styled.div`
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  padding: 0px;
+  gap: 0.75rem;
+  width: 100%;
+`
+export const PaymentCard = styled.div`
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  padding: 1rem;
+  gap: 0.75rem;
+
+  width: 11.1669rem;
+  height: 3.1875rem;
+
+  border-radius: 6px;
+  background-color: ${(props) => props.theme['base-button']};
+
+  span {
+    font-size: 0.75rem !important;
+    align-items: center;
+    color: ${(props) => props.theme['base-text']};
+    text-transform: uppercase;
+    white-space: nowrap;
+  }
+`
 export const ArticleTitles = styled.div`
   display: flex;
   flex-direction: row;

@@ -17,6 +17,11 @@ import {
   PaymentCards,
   PaymentCard,
   Divider,
+  ButtonSubmit,
+  CheckoutSummarySpan,
+  CheckoutSummaryPrice,
+  CheckoutTotalDiv,
+  CheckoutSummaryTotalSpan,
 } from './style'
 
 export function Checkout() {
@@ -86,20 +91,20 @@ export function Checkout() {
             <Divider />
           </CheckoutItems>
           <CheckoutTotal>
-            <div>
-              <span>Total de itens</span>
-              <span>R$ 29,70</span>
-            </div>
-            <div>
-              <span>Entrega</span>
-              <span>R$ 3,50</span>
-            </div>
-            <div>
-              <strong>Total</strong>
-              <strong>R$ 33,20</strong>
-            </div>
+            <CheckoutTotalDiv>
+              <CheckoutSummarySpan>Total de itens</CheckoutSummarySpan>
+              <CheckoutSummaryPrice>R$ 29,70</CheckoutSummaryPrice>
+            </CheckoutTotalDiv>
+            <CheckoutTotalDiv>
+              <CheckoutSummarySpan>Entrega</CheckoutSummarySpan>
+              <CheckoutSummaryPrice>R$ 3,50</CheckoutSummaryPrice>
+            </CheckoutTotalDiv>
+            <CheckoutTotalDiv>
+              <CheckoutSummaryTotalSpan>Total</CheckoutSummaryTotalSpan>
+              <CheckoutSummaryTotalSpan>R$ 33,20</CheckoutSummaryTotalSpan>
+            </CheckoutTotalDiv>
           </CheckoutTotal>
-          <button>CONFIRMAR PEDIDO</button>
+          <ButtonSubmit>Confirmar Pedido</ButtonSubmit>
         </CheckoutSummary>
       </aside>
     </CheckoutContainer>

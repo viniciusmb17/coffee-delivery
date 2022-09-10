@@ -165,8 +165,64 @@ export const CheckoutSummary = styled.div`
   border-radius: 6px 44px;
   background-color: ${(props) => props.theme['base-card']};
 `
-export const CheckoutItems = styled.div``
-export const CheckoutTotal = styled.div``
+export const CheckoutItems = styled.div`
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+`
+export const CheckoutTotal = styled.div`
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: flex-start;
+  padding: 0;
+  gap: 0.75rem;
+
+  width: 23rem;
+  height: 5.75rem;
+
+  flex: none;
+  align-self: stretch;
+  flex-grow: 0;
+`
+export const CheckoutTotalDiv = styled.div`
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+  width: 100%;
+  height: 1.3125rem;
+`
+
+export const CheckoutSummarySpan = styled.span`
+  font-family: 'Roboto';
+  font-style: normal;
+  font-weight: 400;
+  font-size: 0.875rem !important;
+  line-height: 130%;
+
+  display: flex;
+  align-items: center;
+  text-align: right;
+
+  color: ${(props) => props.theme['base-text']};
+`
+export const CheckoutSummaryPrice = styled(CheckoutSummarySpan)`
+  font-size: 1rem !important;
+`
+export const CheckoutSummaryTotalSpan = styled.h2`
+  font-family: 'Roboto';
+  font-style: normal;
+  font-weight: 700;
+  font-size: 20px;
+  line-height: 130%;
+
+  display: flex;
+  align-items: center;
+  text-align: right;
+
+  color: ${(props) => props.theme['base-subtitle']};
+`
 
 export const Divider = styled.hr`
   width: 23rem;
@@ -175,8 +231,33 @@ export const Divider = styled.hr`
   border: 1px solid ${(props) => props.theme['base-button']};
 
   flex: none;
-  order: 1;
   align-self: stretch;
   flex-grow: 0;
-  margin: 24px 0;
+  /* margin: 24px 0; */
+`
+
+export const ButtonSubmit = styled.button`
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  padding: 0.75rem 0.5rem;
+  gap: 0.25rem;
+
+  width: 23rem;
+  height: 2.875rem;
+
+  border: 0;
+  border-radius: 6px;
+  background-color: ${(props) => props.theme.yellow};
+
+  font-family: 'Roboto';
+  font-style: normal;
+  font-weight: 700;
+  font-size: 0.875rem;
+  line-height: 160%;
+
+  text-transform: uppercase;
+  color: ${(props) => props.theme.white};
+  font-stretch: 100;
 `

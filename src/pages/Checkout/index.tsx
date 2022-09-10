@@ -5,6 +5,7 @@ import {
   MapPinLine,
   Money,
 } from 'phosphor-react'
+import { CoffeeSelected } from './components/CoffeeSelected'
 import {
   CheckoutContainer,
   ShippingArticle,
@@ -78,8 +79,9 @@ export function Checkout() {
         <h1>Cafés selecionados</h1>
         <CheckoutSummary>
           <CheckoutItems>
-            <h6>Item 01</h6>
-            <h6>Item 02</h6>
+            <CoffeeSelected />
+            <hr />
+            <CoffeeSelected />
           </CheckoutItems>
           <CheckoutTotal>
             <div>

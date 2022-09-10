@@ -167,3 +167,16 @@ export const CheckoutSummary = styled.div`
 `
 export const CheckoutItems = styled.div``
 export const CheckoutTotal = styled.div``
+
+export const Divider = styled.hr`
+  width: 23rem;
+  height: 0;
+
+  border: 1px solid ${(props) => props.theme['base-button']};
+
+  flex: none;
+  order: 1;
+  align-self: stretch;
+  flex-grow: 0;
+  margin: 24px 0;
+`

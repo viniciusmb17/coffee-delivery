@@ -16,6 +16,7 @@ import {
   CheckoutItems,
   PaymentCards,
   PaymentCard,
+  Divider,
 } from './style'
 
 export function Checkout() {
@@ -80,8 +81,9 @@ export function Checkout() {
         <CheckoutSummary>
           <CheckoutItems>
             <CoffeeSelected />
-            <hr />
+            <Divider />
             <CoffeeSelected />
+            <Divider />
           </CheckoutItems>
           <CheckoutTotal>
             <div>

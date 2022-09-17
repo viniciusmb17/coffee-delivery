@@ -114,9 +114,13 @@ export const ButtonRemove = styled.button`
   svg {
     color: ${(props) => props.theme.purple};
   }
+
+  :hover {
+    background-color: ${(props) => props.theme['base-hover']};
+  }
 `
 
-export const BuyCounter = styled.div`
+export const BuyCounterContainer = styled.div`
   display: flex;
   flex-direction: row;
   justify-content: center;
@@ -134,6 +138,12 @@ export const BuyCounter = styled.div`
   border-radius: 6px;
   color: ${(props) => props.theme.purple};
   background: ${(props) => props.theme['base-button']};
+`
+export const BuyCounterDiv = styled.div`
+  :hover {
+    color: ${(props) => props.theme['purple-dark']};
+    cursor: pointer;
+  }
 `
 
 export const ButtonQuantity = styled.input.attrs((props) => ({

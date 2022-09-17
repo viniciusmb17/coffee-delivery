@@ -1,6 +1,7 @@
 import {
   ButtonRemove,
-  BuyCounter,
+  BuyCounterContainer,
+  BuyCounterDiv,
   CheckoutItem,
   InfoDetails,
   InfoDetailsActions,
@@ -19,11 +20,15 @@ export function CoffeeSelected() {
         <InfoDetails>
           <InfoDetailsTitle>Expresso Tradicional</InfoDetailsTitle>
           <InfoDetailsActions>
-            <BuyCounter>
-              <Minus size={'0.875rem'} weight={'bold'} />
+            <BuyCounterContainer>
+              <BuyCounterDiv>
+                <Minus size={'0.875rem'} weight={'bold'} />
+              </BuyCounterDiv>
               <InputQuantity value={1} />
-              <Plus size={'0.875rem'} weight={'bold'} />
-            </BuyCounter>
+              <BuyCounterDiv>
+                <Plus size={'0.875rem'} weight={'bold'} />
+              </BuyCounterDiv>
+            </BuyCounterContainer>
             <ButtonRemove>
               <Trash size={'1rem'} />
               Remover

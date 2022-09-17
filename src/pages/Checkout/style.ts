@@ -1,4 +1,4 @@
-import styled from 'styled-components'
+import styled, { css } from 'styled-components'
 
 export const CheckoutContainer = styled.div`
   display: flex;
@@ -122,7 +122,11 @@ export const PaymentCards = styled.div`
   gap: 0.75rem;
   width: 100%;
 `
-export const PaymentCard = styled.div`
+interface IPaymentCardProps {
+  readonly selected?: boolean
+}
+
+export const PaymentCard = styled.div<IPaymentCardProps>`
   display: flex;
   flex-direction: row;
   align-items: center;
@@ -142,6 +146,23 @@ export const PaymentCard = styled.div`
     text-transform: uppercase;
     white-space: nowrap;
   }
+
+  :hover {
+    cursor: pointer;
+  }
+  ${(props) => {
+    if (props.selected) {
+      return css`
+        background-color: ${(props) => props.theme['purple-light']};
+        border: 1px solid ${(props) => props.theme.purple};
+      `
+    }
+    return css`
+      :hover {
+        background-color: ${(props) => props.theme['base-hover']};
+      }
+    `
+  }}
 `
 export const ArticleTitles = styled.div`
   display: flex;
@@ -260,4 +281,9 @@ export const ButtonSubmit = styled.button`
   text-transform: uppercase;
   color: ${(props) => props.theme.white};
   font-stretch: 100;
+
+  :hover {
+    cursor: pointer;
+    background-color: ${(props) => props.theme['yellow-dark']};
+  }
 `

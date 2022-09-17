@@ -1,6 +1,8 @@
 import {
   ActionsContainer,
   CartContainer,
+  CartContainerCounter,
+  CartWrapper,
   HeaderContainer,
   LocationContainer,
 } from './style'
@@ -21,9 +23,12 @@ export function Header() {
             <MapPin size={22} weight="fill" />
             <span>Porto Alegre, RS</span>
           </LocationContainer>
-          <CartContainer to="/checkout">
-            <ShoppingCart size={22} weight="fill" />
-          </CartContainer>
+          <CartWrapper>
+            <CartContainerCounter>3</CartContainerCounter>
+            <CartContainer to="/checkout">
+              <ShoppingCart size={22} weight="fill" />
+            </CartContainer>
+          </CartWrapper>
         </ActionsContainer>
       </nav>
     </HeaderContainer>

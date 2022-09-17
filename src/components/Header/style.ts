@@ -38,6 +38,8 @@ export const ActionsContainer = styled.div`
   justify-content: flex-end;
   align-items: center;
   gap: 12px;
+  flex-grow: 0;
+  flex-shrink: 0;
   max-width: fit-content;
   width: 100%;
 `
@@ -65,6 +67,13 @@ export const LocationContainer = styled.div`
     white-space: nowrap;
   }
 `
+export const CartWrapper = styled.div`
+  display: flex;
+  flex-direction: row-reverse;
+  flex-wrap: nowrap;
+  flex-grow: 0;
+`
+
 export const CartContainer = styled(NavLink)`
   display: flex;
   flex-direction: row;
@@ -79,4 +88,29 @@ export const CartContainer = styled(NavLink)`
 
   background: ${(props) => props.theme['yellow-light']};
   color: ${(props) => props.theme['yellow-dark']};
+`
+export const CartContainerCounter = styled.div`
+  visibility: visible;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-width: 1.25rem;
+  width: 100%;
+  min-height: 1.25rem;
+  height: 100%;
+  margin-left: -0.75rem;
+  margin-top: -0.5rem;
+
+  border-radius: 999px;
+  background: ${(props) => props.theme['yellow-dark']};
+  color: ${(props) => props.theme.white};
+
+  font-family: 'Roboto', sans-serif;
+  font-weight: 700;
+  font-size: 0.75rem;
+  line-height: 130%;
+  text-align: center;
+  letter-spacing: -0.06rem;
+
+  z-index: 1;
 `

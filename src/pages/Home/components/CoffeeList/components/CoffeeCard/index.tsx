@@ -1,5 +1,6 @@
 import {
-  BuyCounter,
+  BuyCounterContainer,
+  BuyCounterDiv,
   CardBuyActions,
   CardBuyCart,
   CardBuyValue,
@@ -33,11 +34,15 @@ export function CoffeeCard() {
           <CardBuyValue>9,90</CardBuyValue>
         </CardBuyValueContainer>
         <CardBuyActions>
-          <BuyCounter>
-            <Minus size={'0.875rem'} weight={'bold'} />
+          <BuyCounterContainer>
+            <BuyCounterDiv>
+              <Minus size={'0.875rem'} weight={'bold'} />
+            </BuyCounterDiv>
             <InputQuantity value={1} />
-            <Plus size={'0.875rem'} weight={'bold'} />
-          </BuyCounter>
+            <BuyCounterDiv>
+              <Plus size={'0.875rem'} weight={'bold'} />
+            </BuyCounterDiv>
+          </BuyCounterContainer>
           <CardBuyCart onClick={() => alert('Add to cart')}>
             <ShoppingCart size={22} weight="fill" />
           </CardBuyCart>

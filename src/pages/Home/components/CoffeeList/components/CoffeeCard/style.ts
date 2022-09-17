@@ -82,7 +82,7 @@ export const CardBuyActions = styled.div`
   height: 2.375rem;
 `
 
-export const BuyCounter = styled.div`
+export const BuyCounterContainer = styled.div`
   display: flex;
   flex-direction: row;
   justify-content: center;
@@ -96,6 +96,12 @@ export const BuyCounter = styled.div`
   border-radius: 6px;
   color: ${(props) => props.theme.purple};
   background: ${(props) => props.theme['base-button']};
+`
+export const BuyCounterDiv = styled.div`
+  :hover {
+    color: ${(props) => props.theme['purple-dark']};
+    cursor: pointer;
+  }
 `
 
 export const ButtonQuantity = styled.input.attrs((props) => ({
@@ -136,7 +142,9 @@ export const CardBuyCart = styled.button`
   background: ${(props) => props.theme['purple-dark']};
   color: ${(props) => props.theme['base-card']};
 
-  cursor: pointer;
+  :hover {
+    background: ${(props) => props.theme.purple};
+  }
 `
 
 export const TagsContainer = styled.div`

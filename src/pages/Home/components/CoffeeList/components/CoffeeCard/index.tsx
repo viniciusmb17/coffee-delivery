@@ -13,7 +13,7 @@ import {
 } from './style'
 import Expresso from '../../../../../../assets/coffees/expresso.png'
 
-import { Minus, Plus, ShoppingCart } from 'phosphor-react'
+import { Minus, Plus, ShoppingCartSimple } from 'phosphor-react'
 import { Tag } from '../../../../../../components/Tag'
 
 export function CoffeeCard() {
@@ -44,7 +44,7 @@ export function CoffeeCard() {
             </BuyCounterDiv>
           </BuyCounterContainer>
           <CardBuyCart onClick={() => alert('Add to cart')}>
-            <ShoppingCart size={22} weight="fill" />
+            <ShoppingCartSimple size={22} weight="fill" />
           </CardBuyCart>
         </CardBuyActions>
       </CoffeeCardBuy>

@@ -5,7 +5,7 @@ export const CoffeeListContainer = styled.section`
   margin-top: 2rem;
 
   h1 {
-    position: absolute;
+    position: relative;
     align-items: center;
     left: calc(50% - 16.0625rem / 2 - 28.9688rem);
     font-family: 'Baloo 2';
@@ -15,7 +15,7 @@ export const CoffeeListContainer = styled.section`
   }
 `
 export const FilteredTags = styled.div`
-  position: absolute;
+  position: relative;
   display: flex;
   height: 1.5625rem;
   flex-direction: row;
@@ -26,7 +26,7 @@ export const FilteredTags = styled.div`
 `
 
 export const CoffeeListCards = styled.div`
-  position: absolute;
+  position: relative;
   display: grid;
   grid-template-columns: repeat(4, 1fr);
   gap: 2.5rem;

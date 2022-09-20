@@ -47,7 +47,7 @@ export const OrderInfo = styled.div`
   background-image: url(${OrderInfoBorder});
   background-repeat: no-repeat;
 `
-export const ItemInfo = styled.div`
+export const BaseInfo = styled.div`
   display: flex;
   column-gap: 0.75rem;
   align-items: center;
@@ -57,9 +57,9 @@ export const ItemInfo = styled.div`
   font-weight: 400;
   line-height: 130%;
 `
-export const LocalInfo = styled(ItemInfo)``
-export const TimeInfo = styled(ItemInfo)``
-export const PaymentInfo = styled(ItemInfo)``
+export const LocalInfo = styled(BaseInfo)``
+export const TimeInfo = styled(BaseInfo)``
+export const PaymentInfo = styled(BaseInfo)``
 
 export const IconContainer = styled.div`
   display: flex;

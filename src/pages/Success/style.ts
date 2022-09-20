@@ -1,12 +1,12 @@
-import styled, { css } from 'styled-components'
+import styled from 'styled-components'
 import OrderInfoBorder from '../../assets/order-info-border.svg'
 
 export const SuccessContainer = styled.div`
   display: flex;
   flex-direction: column;
-  left: calc(50% - 16.0625rem / 2 - 28.9688rem);
-  position: relative;
+  margin-left: calc(50% - 16.0625rem / 2 - 28.9688rem);
   margin-top: 5rem;
+  min-height: 500px;
 `
 export const SuccessMain = styled.main`
   display: flex;
@@ -87,7 +87,6 @@ export const PaymentIcon = styled(IconContainer)`
 
 export const SuccessImage = styled.div`
   display: flex;
-  position: relative;
 
   width: 30.75rem;
   height: 18.3125rem;

@@ -2,8 +2,8 @@ import { CurrencyDollar, MapPin, Timer } from 'phosphor-react'
 import SuccessDeliveryIllustration from '../../assets/success-delivery-illustration.png'
 import {
   SuccessContainer,
-  SuccessMainSection,
-  SuccessImageSection,
+  SuccessMain,
+  SuccessImage,
   MainTitles,
   OrderInfo,
   LocalInfo,
@@ -21,51 +21,43 @@ export function Success() {
         <h1>Uhu! Pedido confirmado</h1>
         <h2>Agora é só aguardar que logo o café chegará até você</h2>
       </MainTitles>
-      <SuccessMainSection>
+      <SuccessMain>
         <OrderInfo>
           <LocalInfo>
             <LocalIcon>
               <MapPin size={16} weight="fill" />
             </LocalIcon>
-            <div>
-              <span>
-                Entrega em <strong>Rua João Daniel Martinelli, 102</strong>
-              </span>
+            <span>
+              Entrega em <strong>Rua João Daniel Martinelli, 102</strong>
               <br />
-              <span>Farrapos - Porto Alegre, RS</span>
-            </div>
+              Farrapos - Porto Alegre, RS
+            </span>
           </LocalInfo>
           <TimeInfo>
             <TimeIcon>
               <Timer size={16} weight="fill" />
             </TimeIcon>
-            <div>
-              <span>
-                Previsão de entrega
-                <br />
-                <strong>20 min - 30 min</strong>
-              </span>
-            </div>
+            <span>
+              Previsão de entrega
+              <br />
+              <strong>20 min - 30 min</strong>
+            </span>
           </TimeInfo>
           <PaymentInfo>
             <PaymentIcon>
               <CurrencyDollar size={16} weight="fill" />
             </PaymentIcon>
-            <div>
-              <span>Pagamento na entrega</span>
+            <span>
+              Pagamento na entrega
               <br />
-              <span>
-                <strong>Cartão de crédito</strong>
-              </span>
-            </div>
+              <strong>Cartão de crédito</strong>
+            </span>
           </PaymentInfo>
         </OrderInfo>
-        <SuccessImageSection>
-          <div>
-            <img src={SuccessDeliveryIllustration} alt="" />
-          </div>
-        </SuccessImageSection>
-      </SuccessMainSection>
+        <SuccessImage>
+          <img src={SuccessDeliveryIllustration} alt="" />
+        </SuccessImage>
+      </SuccessMain>
     </SuccessContainer>
   )
 }

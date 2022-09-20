@@ -6,7 +6,7 @@ export const SuccessContainer = styled.div`
   left: calc(50% - 16.0625rem / 2 - 28.9688rem);
   position: relative;
 `
-export const SuccessMainSection = styled.section`
+export const SuccessMain = styled.main`
   display: flex;
   align-items: center;
   flex-direction: row;
@@ -83,7 +83,7 @@ export const PaymentIcon = styled(IconContainer)`
   background-color: ${(props) => props.theme['yellow-dark']};
 `
 
-export const SuccessImageSection = styled.section`
+export const SuccessImage = styled.div`
   display: flex;
   position: relative;
 

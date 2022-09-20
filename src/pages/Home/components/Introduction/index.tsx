@@ -8,6 +8,7 @@ import {
   PackageIcon,
   CoffeeIcon,
   IntroSection,
+  ImageSection,
 } from './style'
 import IntroCoffeDelivery from '../../../../assets/intro-coffee-delivery.png'
 import { Coffee, Package, ShoppingCart, Timer } from 'phosphor-react'
@@ -50,9 +51,9 @@ export function Introduction() {
           </ItemContainer>
         </IntroItems>
       </IntroSection>
-      <IntroSection>
+      <ImageSection>
         <img src={IntroCoffeDelivery} alt="" />
-      </IntroSection>
+      </ImageSection>
     </IntroductionContainer>
   )
 }

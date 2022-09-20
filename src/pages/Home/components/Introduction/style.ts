@@ -5,7 +5,7 @@ export const IntroductionContainer = styled.div`
   display: flex;
   flex-direction: row;
   align-items: center;
-  justify-content: center;
+  /* justify-content: center; */
 
   height: 34rem;
 
@@ -13,10 +13,14 @@ export const IntroductionContainer = styled.div`
   background-repeat: no-repeat;
   background-position: center;
 `
-export const IntroSection = styled.section`
+export const BaseSection = styled.section`
   max-width: 36.75rem;
   width: 100%;
-
+`
+export const IntroSection = styled(BaseSection)`
+  margin-left: 160px;
+`
+export const ImageSection = styled(BaseSection)`
   img {
     width: 29.75rem;
     height: 22.5rem;

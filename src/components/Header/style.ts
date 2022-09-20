@@ -3,13 +3,12 @@ import styled from 'styled-components'
 
 export const HeaderContainer = styled.header`
   position: sticky;
-  width: 100%;
   top: 0;
-  left: 0;
+  width: 90rem;
   background: ${(props) => props.theme.background};
   display: flex;
   flex-direction: row;
-  padding: 2rem 12.75rem;
+  padding: 2rem 10rem;
   line-height: 130%;
   z-index: 10;
 
@@ -17,19 +16,19 @@ export const HeaderContainer = styled.header`
   font-weight: 700;
 
   img {
-    max-width: 5.309rem;
-    max-height: 2.5rem;
-    width: 100%;
-    height: 100%;
+    width: 5.309rem;
+    height: 2.5rem;
   }
   nav {
+    /* position: relative; */
+    /* left: calc(50% - 16.0625rem / 2 - 28.9688rem); */
     display: flex;
     flex-direction: row;
     align-items: center;
-    justify-content: center;
     gap: 51.25rem;
-    max-width: 90rem;
-    width: 100%;
+    /* max-width: 90rem; */
+    /* width: 100%; */
+    width: 90rem;
   }
 `
 export const ActionsContainer = styled.div`

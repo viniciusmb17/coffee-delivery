@@ -1,37 +1,43 @@
 import styled from 'styled-components'
 
 export const CoffeeListContainer = styled.section`
+  display: flex;
+  flex-direction: column;
   line-height: 130%;
   margin-top: 2rem;
+  row-gap: 3.375rem;
+`
+export const CoffeeListHeader = styled.div`
+  display: flex;
+  column-gap: 32.5rem;
+  margin-left: 160px;
+  margin-right: 160px;
+  white-space: nowrap;
 
   h1 {
-    position: relative;
+    display: flex;
     align-items: center;
-    left: calc(50% - 16.0625rem / 2 - 28.9688rem);
     font-family: 'Baloo 2';
     font-weight: 800;
     font-style: normal;
     font-size: 2rem;
   }
 `
+
 export const FilteredTags = styled.div`
-  position: relative;
   display: flex;
   height: 1.5625rem;
   flex-direction: row;
   padding: 0;
   gap: 0.5rem;
   align-items: center;
-  left: calc(50% - 25.5625rem / 2 + 22.2813rem);
 `
 
 export const CoffeeListCards = styled.div`
-  position: relative;
   display: grid;
   grid-template-columns: repeat(4, 1fr);
   gap: 2.5rem;
   width: 70rem;
-  left: calc(50% - 74rem / 2);
-  margin-top: 8rem;
-  padding-bottom: 9.75rem;
+  margin-left: 160px;
+  padding-bottom: 8rem;
 `

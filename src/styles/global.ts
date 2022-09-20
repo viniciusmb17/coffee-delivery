@@ -11,9 +11,11 @@ export const GlobalStyle = createGlobalStyle`
   }
 
   body {
-    background-color: ${(props) => props.theme.background};
+    background-color: ${(props) => props.theme.white};
     color: ${(props) => props.theme['base-text']};
     -webkit-font-smoothing: antialiased;
+    display: flex;
+    justify-content: center;
   }
 
   body, input, textarea, button {

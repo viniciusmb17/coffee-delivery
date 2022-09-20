@@ -1,6 +1,7 @@
 import styled, { css } from 'styled-components'
 
 export const CheckoutContainer = styled.div`
+  height: 100vh;
   display: flex;
   flex-direction: row;
   justify-content: center;

@@ -5,6 +5,7 @@ export const CheckoutContainer = styled.div`
   flex-direction: row;
   justify-content: center;
   gap: 2rem;
+  margin-top: 2.5rem;
 
   h1 {
     align-items: center;
@@ -25,6 +26,14 @@ export const CheckoutContainer = styled.div`
 
     padding: 0;
     gap: 0.75rem;
+  }
+
+  aside {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 0.75rem;
+    padding: 0;
   }
 
   article {

@@ -1,10 +1,12 @@
-import styled from 'styled-components'
+import styled, { css } from 'styled-components'
+import OrderInfoBorder from '../../assets/order-info-border.svg'
 
 export const SuccessContainer = styled.div`
   display: flex;
   flex-direction: column;
   left: calc(50% - 16.0625rem / 2 - 28.9688rem);
   position: relative;
+  margin-top: 5rem;
 `
 export const SuccessMain = styled.main`
   display: flex;
@@ -42,8 +44,8 @@ export const OrderInfo = styled.div`
   width: 32.875rem;
   height: 16.875rem;
 
-  border: 1px solid red;
-  border-radius: 6px 36px;
+  background-image: url(${OrderInfoBorder});
+  background-repeat: no-repeat;
 `
 export const ItemInfo = styled.div`
   display: flex;

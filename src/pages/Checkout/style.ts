@@ -6,6 +6,7 @@ export const CheckoutContainer = styled.div`
   justify-content: center;
   gap: 2rem;
   margin-top: 2.5rem;
+  padding-bottom: 7rem;
 
   h1 {
     align-items: center;

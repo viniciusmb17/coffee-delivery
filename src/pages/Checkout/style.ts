@@ -1,12 +1,12 @@
 import styled, { css } from 'styled-components'
 
 export const CheckoutContainer = styled.div`
-  height: 100vh;
+  height: calc(100vh - 6.5rem);
   display: flex;
   flex-direction: row;
   justify-content: center;
   gap: 2rem;
-  margin-top: 2.5rem;
+  padding-top: 2.5rem;
   padding-bottom: 7rem;
 
   h1 {

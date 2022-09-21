@@ -5,8 +5,8 @@ export const SuccessContainer = styled.div`
   display: flex;
   flex-direction: column;
   margin-left: 10rem;
-  margin-top: 5rem;
-  height: 100vh;
+  padding-top: 5rem;
+  height: calc(100vh - 6.5rem);
 `
 export const SuccessMain = styled.main`
   display: flex;

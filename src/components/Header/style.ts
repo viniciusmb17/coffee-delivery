@@ -10,7 +10,7 @@ export const HeaderContainer = styled.header`
   flex-direction: row;
   padding: 2rem 10rem;
   line-height: 130%;
-  z-index: 10;
+  height: 6.5rem;
 
   font-family: 'Baloo 2', cursive;
   font-weight: 700;

@@ -5,7 +5,6 @@ export const IntroductionContainer = styled.div`
   display: flex;
   flex-direction: row;
   align-items: center;
-  /* justify-content: center; */
 
   height: 34rem;
 
@@ -34,7 +33,7 @@ export const IntroTitle = styled.div`
   align-items: flex-start;
   padding: 0;
   gap: 1rem;
-  margin-bottom: 4.125rem;
+  padding-bottom: 4.125rem;
 
   h1 {
     font-family: 'Baloo 2', cursive;

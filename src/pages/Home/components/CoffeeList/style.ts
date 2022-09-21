@@ -4,14 +4,14 @@ export const CoffeeListContainer = styled.section`
   display: flex;
   flex-direction: column;
   line-height: 130%;
-  margin-top: 2rem;
+  padding-top: 2rem;
   row-gap: 3.375rem;
 `
 export const CoffeeListHeader = styled.div`
   display: flex;
   column-gap: 32.5rem;
-  margin-left: 160px;
-  margin-right: 160px;
+  padding-left: 160px;
+  padding-right: 160px;
   white-space: nowrap;
 
   h1 {
@@ -38,6 +38,6 @@ export const CoffeeListCards = styled.div`
   grid-template-columns: repeat(4, 1fr);
   gap: 2.5rem;
   width: 70rem;
-  margin-left: 160px;
+  padding-left: 160px;
   padding-bottom: 8rem;
 `

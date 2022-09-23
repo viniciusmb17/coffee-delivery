@@ -16,6 +16,7 @@ export const GlobalStyle = createGlobalStyle`
     -webkit-font-smoothing: antialiased;
     display: flex;
     justify-content: center;
+    width: 100vw;
   }
 
   body, input, textarea, button {

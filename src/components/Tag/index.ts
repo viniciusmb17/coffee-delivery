@@ -25,6 +25,7 @@ export const Tag = styled.div<{ variant?: string }>`
   height: 1.5625rem;
   font-weight: 700;
   font-size: 0.625rem;
+  text-transform: uppercase;
   border-radius: 100px;
 
   ${({ variant }) => variantStyles(variant)}

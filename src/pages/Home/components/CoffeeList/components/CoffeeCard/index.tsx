@@ -11,27 +11,46 @@ import {
   InputQuantity,
   TagsContainer,
 } from './style'
-import Expresso from '../../../../../../assets/coffees/expresso.png'
 
 import { Minus, Plus, ShoppingCartSimple } from 'phosphor-react'
 import { Tag } from '../../../../../../components/Tag'
 
-export function CoffeeCard() {
+interface ICoffeeCardProps {
+  name: string
+  description: string
+  price: number
+  imageSrc: string
+  tags: string[]
+}
+
+export function CoffeeCard({
+  name,
+  description,
+  price,
+  imageSrc,
+  tags,
+}: ICoffeeCardProps) {
+  const priceToString = price.toLocaleString('pt-BR', {
+    minimumFractionDigits: 2,
+    maximumFractionDigits: 2,
+  })
+
   return (
     <CoffeeCardContainer>
-      <img src={Expresso} alt="" />
+      <img src={imageSrc} alt="" />
       <TagsContainer>
-        <Tag variant="filled">TRADICIONAL</Tag>
-        <Tag variant="filled">QUENTE</Tag>
+        {tags.map((tag) => (
+          <Tag key={tag} variant="filled">
+            {tag}
+          </Tag>
+        ))}
       </TagsContainer>
-      <h2>Expresso Tradicional</h2>
-      <CoffeeCardDescription>
-        O tradicional café feito com água quente e grãos moídos
-      </CoffeeCardDescription>
+      <h2>{name}</h2>
+      <CoffeeCardDescription>{description}</CoffeeCardDescription>
       <CoffeeCardBuy>
         <CardBuyValueContainer>
           <span>R$</span>
-          <CardBuyValue>9,90</CardBuyValue>
+          <CardBuyValue>{priceToString}</CardBuyValue>
         </CardBuyValueContainer>
         <CardBuyActions>
           <BuyCounterContainer>

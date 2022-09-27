@@ -1,15 +1,9 @@
-import {
-  ActionsContainer,
-  CartContainer,
-  CartContainerCounter,
-  CartWrapper,
-  HeaderContainer,
-  LocationContainer,
-} from './style'
+import { ActionsContainer, HeaderContainer, LocationContainer } from './style'
 
 import logoCoffeeDelivery from '../../assets/logo-coffee-delivery.svg'
-import { MapPin, ShoppingCart } from 'phosphor-react'
+import { MapPin } from 'phosphor-react'
 import { NavLink } from 'react-router-dom'
+import { Cart } from '../Cart'
 
 export function Header() {
   return (
@@ -23,12 +17,7 @@ export function Header() {
             <MapPin size={22} weight="fill" />
             <span>Porto Alegre, RS</span>
           </LocationContainer>
-          <CartWrapper>
-            <CartContainerCounter>3</CartContainerCounter>
-            <CartContainer to="/checkout">
-              <ShoppingCart size={22} weight="fill" />
-            </CartContainer>
-          </CartWrapper>
+          <Cart counter={3} />
         </ActionsContainer>
       </nav>
     </HeaderContainer>

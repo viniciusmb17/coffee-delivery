@@ -265,7 +265,6 @@ export const Divider = styled.hr`
   flex: none;
   align-self: stretch;
   flex-grow: 0;
-  /* margin: 24px 0; */
 `
 
 export const ButtonSubmit = styled.button`

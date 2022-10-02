@@ -1,4 +1,4 @@
-import { createContext, ReactNode } from 'react'
+import { createContext, ReactNode, useReducer } from 'react'
 import { v4 as uuidv4 } from 'uuid'
 import {
   AmericanoImg,
@@ -16,6 +16,8 @@ import {
   MacchiatoImg,
   MochaccinoImg,
 } from '../assets/coffees'
+import { addToCartAction } from '../reducers/cart/actions'
+import { cartReducer, ICartState } from '../reducers/cart/reducer'
 
 interface ICoffeeContextTypes {
   coffees: {
@@ -34,6 +36,8 @@ interface ICoffeeContextTypes {
     gelado: string
     quente: string
   }
+  addToCart: () => void
+  cart: ICartState
 }
 
 interface ICoffeeContextProviderProps {
@@ -45,6 +49,8 @@ export const CoffeeContext = createContext({} as ICoffeeContextTypes)
 export function CoffeeContextProvider({
   children,
 }: ICoffeeContextProviderProps) {
+  const [cart, dispatch] = useReducer(cartReducer, { items: [] })
+
   const coffeeTags = {
     tradicional: 'Tradicional',
     especial: 'Especial',
@@ -174,8 +180,12 @@ export function CoffeeContextProvider({
     },
   ]
 
+  function addToCart() {
+    dispatch(addToCartAction())
+  }
+
   return (
-    <CoffeeContext.Provider value={{ coffees, coffeeTags }}>
+    <CoffeeContext.Provider value={{ coffees, coffeeTags, addToCart, cart }}>
       {children}
     </CoffeeContext.Provider>
   )

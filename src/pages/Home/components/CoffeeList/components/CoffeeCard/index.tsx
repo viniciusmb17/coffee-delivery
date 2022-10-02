@@ -21,6 +21,7 @@ interface ICoffeeCardProps {
   price: number
   imageSrc: string
   tags: string[]
+  addToCart: () => void
 }
 
 export function CoffeeCard({
@@ -29,6 +30,7 @@ export function CoffeeCard({
   price,
   imageSrc,
   tags,
+  addToCart,
 }: ICoffeeCardProps) {
   const priceToString = price.toLocaleString('pt-BR', {
     minimumFractionDigits: 2,
@@ -57,12 +59,17 @@ export function CoffeeCard({
             <BuyCounterDiv>
               <Minus size={'0.875rem'} weight={'bold'} />
             </BuyCounterDiv>
-            <InputQuantity value={1} />
+            <InputQuantity defaultValue={1} />
             <BuyCounterDiv>
               <Plus size={'0.875rem'} weight={'bold'} />
             </BuyCounterDiv>
           </BuyCounterContainer>
-          <CardBuyCart onClick={() => alert('Add to cart')}>
+          <CardBuyCart
+            onClick={() => {
+              addToCart()
+              alert('Add to cart')
+            }}
+          >
             <ShoppingCartSimple size={22} weight="fill" />
           </CardBuyCart>
         </CardBuyActions>

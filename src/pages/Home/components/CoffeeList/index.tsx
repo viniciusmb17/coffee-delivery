@@ -10,7 +10,7 @@ import {
 } from './style'
 
 export function CoffeeList() {
-  const { coffees, coffeeTags } = useContext(CoffeeContext)
+  const { coffees, coffeeTags, addToCart } = useContext(CoffeeContext)
 
   return (
     <CoffeeListContainer>
@@ -33,6 +33,7 @@ export function CoffeeList() {
             imageSrc={coffee.imageSrc}
             price={coffee.price}
             tags={coffee.tags}
+            addToCart={addToCart}
           />
         ))}
       </CoffeeListCards>

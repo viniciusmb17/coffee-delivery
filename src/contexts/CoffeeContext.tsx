@@ -36,7 +36,7 @@ interface ICoffeeContextTypes {
     gelado: string
     quente: string
   }
-  addToCart: () => void
+  addToCart: (coffeeId: string, quantity: number) => void
   cart: ICartState
 }
 
@@ -180,8 +180,8 @@ export function CoffeeContextProvider({
     },
   ]
 
-  function addToCart() {
-    dispatch(addToCartAction())
+  function addToCart(coffeeId: string, quantity: number) {
+    dispatch(addToCartAction(coffeeId, quantity))
   }
 
   return (

@@ -1,3 +1,4 @@
+import React, { useState } from 'react'
 import {
   BuyCounterContainer,
   BuyCounterDiv,
@@ -21,7 +22,7 @@ interface ICoffeeCardProps {
   price: number
   imageSrc: string
   tags: string[]
-  addToCart: () => void
+  addToCart: (coffeeId: string, quantity: number) => void
 }
 
 export function CoffeeCard({
@@ -36,6 +37,24 @@ export function CoffeeCard({
     minimumFractionDigits: 2,
     maximumFractionDigits: 2,
   })
+
+  const [coffeeQuantity, setCoffeeQuantity] = useState(1)
+
+  function handleCoffeeQuantityChange(e: React.ChangeEvent<HTMLInputElement>) {
+    e.preventDefault()
+    const { value } = e.target
+    setCoffeeQuantity(Number(value))
+  }
+
+  function incrementCoffeeQuantity() {
+    setCoffeeQuantity((prevState) => prevState + 1)
+  }
+
+  function decrementCoffeeQuantity() {
+    setCoffeeQuantity((prevState) =>
+      prevState > 0 ? prevState - 1 : prevState,
+    )
+  }
 
   return (
     <CoffeeCardContainer>
@@ -56,17 +75,20 @@ export function CoffeeCard({
         </CardBuyValueContainer>
         <CardBuyActions>
           <BuyCounterContainer>
-            <BuyCounterDiv>
+            <BuyCounterDiv onClick={decrementCoffeeQuantity}>
               <Minus size={'0.875rem'} weight={'bold'} />
             </BuyCounterDiv>
-            <InputQuantity defaultValue={1} />
-            <BuyCounterDiv>
+            <InputQuantity
+              value={coffeeQuantity}
+              onChange={handleCoffeeQuantityChange}
+            />
+            <BuyCounterDiv onClick={incrementCoffeeQuantity}>
               <Plus size={'0.875rem'} weight={'bold'} />
             </BuyCounterDiv>
           </BuyCounterContainer>
           <CardBuyCart
             onClick={() => {
-              addToCart()
+              // addToCart()
               alert('Add to cart')
             }}
           >

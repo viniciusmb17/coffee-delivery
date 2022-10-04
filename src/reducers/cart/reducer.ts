@@ -1,7 +1,7 @@
+import produce from 'immer'
 import { ActionTypes } from './actions'
 
 export interface ICartItem {
-  id: string
   coffeeId: string
   quantity: number
 }
@@ -13,8 +13,13 @@ export interface ICartState {
 export function cartReducer(state: ICartState, action: any) {
   switch (action.type) {
     case ActionTypes.ADD_TO_CART: {
-      console.log('ADD_TO_CART log')
-      return state
+      return produce(state, (draft) => {
+        const item = <ICartItem>{
+          coffeeId: action.payload.coffeeId,
+          quantity: action.payload.quantity,
+        }
+        draft.items.push(item)
+      })
     }
     default:
       throw new Error()

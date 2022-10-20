@@ -17,6 +17,7 @@ import { Minus, Plus, ShoppingCartSimple } from 'phosphor-react'
 import { Tag } from '../../../../../../components/Tag'
 
 interface ICoffeeCardProps {
+  coffeeId: string
   name: string
   description: string
   price: number
@@ -26,6 +27,7 @@ interface ICoffeeCardProps {
 }
 
 export function CoffeeCard({
+  coffeeId,
   name,
   description,
   price,
@@ -88,8 +90,7 @@ export function CoffeeCard({
           </BuyCounterContainer>
           <CardBuyCart
             onClick={() => {
-              // addToCart()
-              alert('Add to cart')
+              addToCart(coffeeId, coffeeQuantity)
             }}
           >
             <ShoppingCartSimple size={22} weight="fill" />

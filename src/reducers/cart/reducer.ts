@@ -18,7 +18,14 @@ export function cartReducer(state: ICartState, action: any) {
           coffeeId: action.payload.coffeeId,
           quantity: action.payload.quantity,
         }
-        draft.items.push(item)
+
+        const coffeeIndex = draft.items.findIndex(
+          (coffee) => item.coffeeId === coffee.coffeeId,
+        )
+
+        coffeeIndex === -1
+          ? draft.items.push(item)
+          : (draft.items[coffeeIndex].quantity += item.quantity)
       })
     }
     default:

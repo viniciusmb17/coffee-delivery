@@ -1,11 +1,15 @@
+import { useContext } from 'react'
 import { ActionsContainer, HeaderContainer, LocationContainer } from './style'
 
 import logoCoffeeDelivery from '../../assets/logo-coffee-delivery.svg'
 import { MapPin } from 'phosphor-react'
 import { NavLink } from 'react-router-dom'
 import { Cart } from '../Cart'
+import { CoffeeContext } from '../../contexts/CoffeeContext'
 
 export function Header() {
+  const { cart } = useContext(CoffeeContext)
+
   return (
     <HeaderContainer>
       <nav>
@@ -17,7 +21,7 @@ export function Header() {
             <MapPin size={22} weight="fill" />
             <span>Porto Alegre, RS</span>
           </LocationContainer>
-          <Cart counter={3} />
+          <Cart counter={cart.items.length} />
         </ActionsContainer>
       </nav>
     </HeaderContainer>

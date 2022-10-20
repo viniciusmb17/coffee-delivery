@@ -8,7 +8,7 @@ interface ICartProps {
 export function Cart({ counter }: ICartProps) {
   return (
     <CartWrapper>
-      <CartContainerCounter>3</CartContainerCounter>
+      {counter > 0 && <CartContainerCounter>{counter}</CartContainerCounter>}
       <CartContainer to="/checkout">
         <ShoppingCart size={22} weight="fill" />
       </CartContainer>

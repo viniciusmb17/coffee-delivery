@@ -9,7 +9,12 @@ export function Cart({ counter }: ICartProps) {
   return (
     <CartWrapper>
       {counter > 0 && <CartContainerCounter>{counter}</CartContainerCounter>}
-      <CartContainer to="/checkout">
+      <CartContainer
+        to={counter > 0 ? '/checkout' : '/'}
+        onClick={() => {
+          counter === 0 && alert('Carrinho vazio!')
+        }}
+      >
         <ShoppingCart size={22} weight="fill" />
       </CartContainer>
     </CartWrapper>

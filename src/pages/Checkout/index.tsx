@@ -17,7 +17,6 @@ import {
   CheckoutItems,
   PaymentCards,
   PaymentCard,
-  Divider,
   ButtonSubmit,
   CheckoutSummarySpan,
   CheckoutSummaryPrice,
@@ -88,9 +87,6 @@ export function Checkout() {
         <CheckoutSummary>
           <CheckoutItems>
             <CoffeeSelected />
-            <Divider />
-            <CoffeeSelected />
-            <Divider />
           </CheckoutItems>
           <CheckoutTotal>
             <CheckoutTotalDiv>

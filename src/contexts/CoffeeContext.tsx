@@ -193,7 +193,6 @@ export function CoffeeContextProvider({
   function addToCart(coffeeId: string, quantity: number) {
     dispatch(addToCartAction(coffeeId, quantity))
   }
-  console.log('cart', cart)
   return (
     <CoffeeContext.Provider value={{ coffees, coffeeTags, addToCart, cart }}>
       {children}

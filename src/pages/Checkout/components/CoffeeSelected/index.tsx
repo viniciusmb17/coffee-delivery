@@ -1,8 +1,10 @@
+import { useContext } from 'react'
 import {
   ButtonRemove,
   BuyCounterContainer,
   BuyCounterDiv,
   CheckoutItem,
+  Divider,
   InfoDetails,
   InfoDetailsActions,
   InfoDetailsTitle,
@@ -11,32 +13,50 @@ import {
 } from './style'
 import Expresso from '../../../../assets/coffees/expresso.png'
 import { Minus, Plus, Trash } from 'phosphor-react'
+import { CoffeeContext } from '../../../../contexts/CoffeeContext'
 
 export function CoffeeSelected() {
+  const { coffees, cart } = useContext(CoffeeContext)
+
   return (
-    <CheckoutItem>
-      <ItemInfo>
-        <img src={Expresso} alt="" />
-        <InfoDetails>
-          <InfoDetailsTitle>Expresso Tradicional</InfoDetailsTitle>
-          <InfoDetailsActions>
-            <BuyCounterContainer>
-              <BuyCounterDiv>
-                <Minus size={'0.875rem'} weight={'bold'} />
-              </BuyCounterDiv>
-              <InputQuantity value={1} />
-              <BuyCounterDiv>
-                <Plus size={'0.875rem'} weight={'bold'} />
-              </BuyCounterDiv>
-            </BuyCounterContainer>
-            <ButtonRemove>
-              <Trash size={'1rem'} />
-              Remover
-            </ButtonRemove>
-          </InfoDetailsActions>
-        </InfoDetails>
-      </ItemInfo>
-      <span>R$ 9,90</span>
-    </CheckoutItem>
+    <>
+      {cart.items.map((item) => {
+        const coffee = coffees.find((coffee) => coffee.id === item.coffeeId)
+        const priceToString = coffee?.price.toLocaleString('pt-BR', {
+          minimumFractionDigits: 2,
+          maximumFractionDigits: 2,
+        })
+
+        return (
+          <>
+            <CheckoutItem key={item.coffeeId}>
+              <ItemInfo>
+                <img src={Expresso} alt="" />
+                <InfoDetails>
+                  <InfoDetailsTitle>{coffee?.name}</InfoDetailsTitle>
+                  <InfoDetailsActions>
+                    <BuyCounterContainer>
+                      <BuyCounterDiv>
+                        <Minus size={'0.875rem'} weight={'bold'} />
+                      </BuyCounterDiv>
+                      <InputQuantity value={item.quantity} />
+                      <BuyCounterDiv>
+                        <Plus size={'0.875rem'} weight={'bold'} />
+                      </BuyCounterDiv>
+                    </BuyCounterContainer>
+                    <ButtonRemove>
+                      <Trash size={'1rem'} />
+                      Remover
+                    </ButtonRemove>
+                  </InfoDetailsActions>
+                </InfoDetails>
+              </ItemInfo>
+              <span>R$ {priceToString}</span>
+            </CheckoutItem>
+            <Divider />
+          </>
+        )
+      })}
+    </>
   )
 }

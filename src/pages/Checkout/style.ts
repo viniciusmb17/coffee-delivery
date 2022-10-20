@@ -256,17 +256,6 @@ export const CheckoutSummaryTotalSpan = styled.h2`
   color: ${(props) => props.theme['base-subtitle']};
 `
 
-export const Divider = styled.hr`
-  width: 23rem;
-  height: 0;
-
-  border: 1px solid ${(props) => props.theme['base-button']};
-
-  flex: none;
-  align-self: stretch;
-  flex-grow: 0;
-`
-
 export const ButtonSubmit = styled.button`
   display: flex;
   flex-direction: row;

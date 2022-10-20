@@ -168,3 +168,14 @@ export const InputQuantity = styled.input.attrs((props) => ({
   border: 0;
   background-color: inherit;
 `
+
+export const Divider = styled.hr`
+  width: 23rem;
+  height: 0;
+
+  border: 1px solid ${(props) => props.theme['base-button']};
+
+  flex: none;
+  align-self: stretch;
+  flex-grow: 0;
+`

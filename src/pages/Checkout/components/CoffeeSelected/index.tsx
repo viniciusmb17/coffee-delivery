@@ -11,14 +11,11 @@ import {
   InputQuantity,
   ItemInfo,
 } from './style'
-import Expresso from '../../../../assets/coffees/expresso.png'
 import { Minus, Plus, Trash } from 'phosphor-react'
 import { CoffeeContext } from '../../../../contexts/CoffeeContext'
-import { useNavigate } from 'react-router-dom'
 
 export function CoffeeSelected() {
   const { coffees, cart } = useContext(CoffeeContext)
-  const navigate = useNavigate()
 
   return (
     <>
@@ -34,7 +31,7 @@ export function CoffeeSelected() {
             <>
               <CheckoutItem key={item.coffeeId}>
                 <ItemInfo>
-                  <img src={Expresso} alt="" />
+                  <img src={coffee?.imageSrc} alt="" />
                   <InfoDetails>
                     <InfoDetailsTitle>{coffee?.name}</InfoDetailsTitle>
                     <InfoDetailsActions>

@@ -1,7 +1,7 @@
 import styled, { css } from 'styled-components'
 
 export const CheckoutContainer = styled.div`
-  height: calc(100vh - 6.5rem);
+  /* height: calc(100vh - 6.5rem); */
   display: flex;
   flex-direction: row;
   justify-content: center;
@@ -193,7 +193,6 @@ export const CheckoutSummary = styled.div`
   padding: 2.5rem;
   gap: 1.5rem;
   width: 28rem;
-  height: 31.125rem;
   border-radius: 6px 44px;
   background-color: ${(props) => props.theme['base-card']};
 `

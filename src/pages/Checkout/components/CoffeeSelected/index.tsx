@@ -22,38 +22,65 @@ export function CoffeeSelected() {
       {cart.items.length !== 0 ? (
         cart.items.map((item) => {
           const coffee = coffees.find((coffee) => coffee.id === item.coffeeId)
-          const priceToString = coffee?.price.toLocaleString('pt-BR', {
-            minimumFractionDigits: 2,
-            maximumFractionDigits: 2,
-          })
+          const coffeePrice = coffee?.price || 0
+
+          function priceToString(price: number) {
+            return price.toLocaleString('pt-BR', {
+              minimumFractionDigits: 2,
+              maximumFractionDigits: 2,
+            })
+          }
 
           return (
             <>
-              <CheckoutItem key={item.coffeeId}>
-                <ItemInfo>
+              <CheckoutItem key={`CheckoutItem${item.coffeeId}`}>
+                <ItemInfo key={`ItemInfo${item.coffeeId}`}>
                   <img src={coffee?.imageSrc} alt="" />
-                  <InfoDetails>
-                    <InfoDetailsTitle>{coffee?.name}</InfoDetailsTitle>
-                    <InfoDetailsActions>
-                      <BuyCounterContainer>
-                        <BuyCounterDiv>
-                          <Minus size={'0.875rem'} weight={'bold'} />
+                  <InfoDetails key={`InfoDetails${item.coffeeId}`}>
+                    <InfoDetailsTitle key={`InfoDetailsTitle${item.coffeeId}`}>
+                      {coffee?.name}
+                    </InfoDetailsTitle>
+                    <InfoDetailsActions
+                      key={`InfoDetailsActions${item.coffeeId}`}
+                    >
+                      <BuyCounterContainer
+                        key={`BuyCounterContainer${item.coffeeId}`}
+                      >
+                        <BuyCounterDiv
+                          key={`BuyCounterDivMinus${item.coffeeId}`}
+                        >
+                          <Minus
+                            key={`Minus${item.coffeeId}`}
+                            size={'0.875rem'}
+                            weight={'bold'}
+                          />
                         </BuyCounterDiv>
-                        <InputQuantity value={item.quantity} />
-                        <BuyCounterDiv>
-                          <Plus size={'0.875rem'} weight={'bold'} />
+                        <InputQuantity
+                          key={`InputQuantity${item.coffeeId}`}
+                          defaultValue={item.quantity}
+                        />
+                        <BuyCounterDiv
+                          key={`BuyCounterDivPlus${item.coffeeId}`}
+                        >
+                          <Plus
+                            key={`Plus${item.coffeeId}`}
+                            size={'0.875rem'}
+                            weight={'bold'}
+                          />
                         </BuyCounterDiv>
                       </BuyCounterContainer>
-                      <ButtonRemove>
-                        <Trash size={'1rem'} />
+                      <ButtonRemove key={`BuyCounterDivMinus${item.coffeeId}`}>
+                        <Trash key={`Trash${item.coffeeId}`} size={'1rem'} />
                         Remover
                       </ButtonRemove>
                     </InfoDetailsActions>
                   </InfoDetails>
                 </ItemInfo>
-                <span>R$ {priceToString}</span>
+                <span key={`span${item.coffeeId}`}>
+                  {`R$ ${priceToString(coffeePrice * item.quantity)}`}
+                </span>
               </CheckoutItem>
-              <Divider />
+              <Divider key={`Divider${item.coffeeId}`} />
             </>
           )
         })

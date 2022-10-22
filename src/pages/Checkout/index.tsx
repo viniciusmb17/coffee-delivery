@@ -5,7 +5,9 @@ import {
   MapPinLine,
   Money,
 } from 'phosphor-react'
+import { useContext } from 'react'
 import { useNavigate } from 'react-router-dom'
+import { CoffeeContext } from '../../contexts/CoffeeContext'
 import { CoffeeSelected } from './components/CoffeeSelected'
 import {
   CheckoutContainer,
@@ -26,6 +28,30 @@ import {
 
 export function Checkout() {
   const navigate = useNavigate()
+  const { coffees, cart } = useContext(CoffeeContext)
+
+  function priceToString(price: number) {
+    return price.toLocaleString('pt-BR', {
+      minimumFractionDigits: 2,
+      maximumFractionDigits: 2,
+    })
+  }
+
+  const totalItems =
+    cart.items.length > 0
+      ? cart.items
+          .map((item) => {
+            const coffee = coffees.find((coffee) => coffee.id === item.coffeeId)
+            const coffeePrice = coffee?.price || 0
+            return coffeePrice * item.quantity
+          })
+          .reduce((acc, totalItem) => {
+            return acc + totalItem
+          }, 0)
+      : 0
+  const deliveryCost = cart.items.length > 0 ? 7.5 : 0
+  const totalOrder = priceToString(deliveryCost + totalItems)
+
   return (
     <CheckoutContainer>
       <section>
@@ -91,15 +117,19 @@ export function Checkout() {
           <CheckoutTotal>
             <CheckoutTotalDiv>
               <CheckoutSummarySpan>Total de itens</CheckoutSummarySpan>
-              <CheckoutSummaryPrice>R$ 29,70</CheckoutSummaryPrice>
+              <CheckoutSummaryPrice>
+                {`R$ ${priceToString(totalItems)}`}
+              </CheckoutSummaryPrice>
             </CheckoutTotalDiv>
             <CheckoutTotalDiv>
               <CheckoutSummarySpan>Entrega</CheckoutSummarySpan>
-              <CheckoutSummaryPrice>R$ 3,50</CheckoutSummaryPrice>
+              <CheckoutSummaryPrice>{`R$ ${priceToString(
+                deliveryCost,
+              )}`}</CheckoutSummaryPrice>
             </CheckoutTotalDiv>
             <CheckoutTotalDiv>
               <CheckoutSummaryTotalSpan>Total</CheckoutSummaryTotalSpan>
-              <CheckoutSummaryTotalSpan>R$ 33,20</CheckoutSummaryTotalSpan>
+              <CheckoutSummaryTotalSpan>{`R$ ${totalOrder}`}</CheckoutSummaryTotalSpan>
             </CheckoutTotalDiv>
           </CheckoutTotal>
           <ButtonSubmit onClick={() => navigate('/success')}>

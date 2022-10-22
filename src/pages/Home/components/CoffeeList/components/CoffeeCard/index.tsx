@@ -91,6 +91,10 @@ export function CoffeeCard({
           <CardBuyCart
             onClick={() => {
               addToCart(coffeeId, coffeeQuantity)
+              alert(
+                `Adicionado ao carrinho: 
+                Item: ${name} | Quantidade: ${coffeeQuantity}`,
+              )
             }}
           >
             <ShoppingCartSimple size={22} weight="fill" />

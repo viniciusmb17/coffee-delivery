@@ -15,7 +15,19 @@ import { Minus, Plus, Trash } from 'phosphor-react'
 import { CoffeeContext } from '../../../../contexts/CoffeeContext'
 
 export function CoffeeSelected() {
-  const { coffees, cart } = useContext(CoffeeContext)
+  const { coffees, cart, changeItemCartQuantity } = useContext(CoffeeContext)
+
+  function handlePlus(coffeeId: string, quantity: number) {
+    handleQuantityChange(coffeeId, quantity + 1)
+  }
+
+  function handleMinus(coffeeId: string, quantity: number) {
+    handleQuantityChange(coffeeId, quantity - 1)
+  }
+
+  function handleQuantityChange(coffeeId: string, quantity: number) {
+    changeItemCartQuantity(coffeeId, quantity)
+  }
 
   return (
     <>
@@ -48,6 +60,9 @@ export function CoffeeSelected() {
                       >
                         <BuyCounterDiv
                           key={`BuyCounterDivMinus${item.coffeeId}`}
+                          onClick={() =>
+                            handleMinus(item.coffeeId, item.quantity)
+                          }
                         >
                           <Minus
                             key={`Minus${item.coffeeId}`}
@@ -57,10 +72,19 @@ export function CoffeeSelected() {
                         </BuyCounterDiv>
                         <InputQuantity
                           key={`InputQuantity${item.coffeeId}`}
-                          defaultValue={item.quantity}
+                          value={item.quantity}
+                          onChange={(e) =>
+                            handleQuantityChange(
+                              item.coffeeId,
+                              Number(e.target.value),
+                            )
+                          }
                         />
                         <BuyCounterDiv
                           key={`BuyCounterDivPlus${item.coffeeId}`}
+                          onClick={() =>
+                            handlePlus(item.coffeeId, item.quantity)
+                          }
                         >
                           <Plus
                             key={`Plus${item.coffeeId}`}

@@ -16,7 +16,10 @@ import {
   MacchiatoImg,
   MochaccinoImg,
 } from '../assets/coffees'
-import { addToCartAction } from '../reducers/cart/actions'
+import {
+  addToCartAction,
+  changeItemCartQuantityAction,
+} from '../reducers/cart/actions'
 import { cartReducer, ICartState } from '../reducers/cart/reducer'
 
 interface ICoffeeContextTypes {
@@ -38,6 +41,7 @@ interface ICoffeeContextTypes {
   }
   addToCart: (coffeeId: string, quantity: number) => void
   cart: ICartState
+  changeItemCartQuantity: (coffeeId: string, quantity: number) => void
 }
 
 interface ICoffeeContextProviderProps {
@@ -193,8 +197,21 @@ export function CoffeeContextProvider({
   function addToCart(coffeeId: string, quantity: number) {
     dispatch(addToCartAction(coffeeId, quantity))
   }
+
+  function changeItemCartQuantity(coffeeId: string, quantity: number) {
+    dispatch(changeItemCartQuantityAction(coffeeId, quantity))
+  }
+
   return (
-    <CoffeeContext.Provider value={{ coffees, coffeeTags, addToCart, cart }}>
+    <CoffeeContext.Provider
+      value={{
+        coffees,
+        coffeeTags,
+        addToCart,
+        cart,
+        changeItemCartQuantity,
+      }}
+    >
       {children}
     </CoffeeContext.Provider>
   )

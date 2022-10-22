@@ -28,6 +28,16 @@ export function cartReducer(state: ICartState, action: any) {
           : (draft.items[coffeeIndex].quantity += item.quantity)
       })
     }
+    case ActionTypes.CHANGE_ITEM_CART_QUANTITY: {
+      return produce(state, (draft) => {
+        const { coffeeId, quantity } = action.payload
+        const coffeeIndex = draft.items.findIndex(
+          (coffee) => coffee.coffeeId === coffeeId,
+        )
+
+        coffeeIndex !== -1 && (draft.items[coffeeIndex].quantity = quantity)
+      })
+    }
     default:
       throw new Error()
   }

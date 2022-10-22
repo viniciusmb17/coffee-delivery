@@ -5,7 +5,7 @@ import {
   MapPinLine,
   Money,
 } from 'phosphor-react'
-import { useContext } from 'react'
+import { useContext, useState } from 'react'
 import { useNavigate } from 'react-router-dom'
 import { CoffeeContext } from '../../contexts/CoffeeContext'
 import { CoffeeSelected } from './components/CoffeeSelected'
@@ -26,9 +26,20 @@ import {
   CheckoutSummaryTotalSpan,
 } from './style'
 
+interface ISelectedPayment {
+  type: 'credit' | 'debit' | 'cash'
+}
+
 export function Checkout() {
   const navigate = useNavigate()
   const { coffees, cart } = useContext(CoffeeContext)
+  const [selectedPayment, setSelectedPayment] = useState<ISelectedPayment>({
+    type: 'credit',
+  })
+
+  function handleChangePaymentCards(type: ISelectedPayment['type']) {
+    setSelectedPayment({ type })
+  }
 
   function priceToString(price: number) {
     return price.toLocaleString('pt-BR', {
@@ -93,15 +104,24 @@ export function Checkout() {
             </div>
           </ArticleTitles>
           <PaymentCards>
-            <PaymentCard selected>
+            <PaymentCard
+              selected={selectedPayment.type === 'credit'}
+              onClick={() => handleChangePaymentCards('credit')}
+            >
               <CreditCard size={16} weight="light" />
               <span>Cartão de crédito</span>
             </PaymentCard>
-            <PaymentCard>
+            <PaymentCard
+              selected={selectedPayment.type === 'debit'}
+              onClick={() => handleChangePaymentCards('debit')}
+            >
               <Bank size={16} weight="light" />
               <span>Cartão de débito</span>
             </PaymentCard>
-            <PaymentCard>
+            <PaymentCard
+              selected={selectedPayment.type === 'cash'}
+              onClick={() => handleChangePaymentCards('cash')}
+            >
               <Money size={16} weight="light" />
               <span>Dinheiro</span>
             </PaymentCard>

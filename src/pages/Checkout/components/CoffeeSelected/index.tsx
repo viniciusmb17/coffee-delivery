@@ -15,7 +15,8 @@ import { Minus, Plus, Trash } from 'phosphor-react'
 import { CoffeeContext } from '../../../../contexts/CoffeeContext'
 
 export function CoffeeSelected() {
-  const { coffees, cart, changeItemCartQuantity } = useContext(CoffeeContext)
+  const { coffees, cart, changeItemCartQuantity, removeItemFromCart } =
+    useContext(CoffeeContext)
 
   function handlePlus(coffeeId: string, quantity: number) {
     handleQuantityChange(coffeeId, quantity + 1)
@@ -27,6 +28,10 @@ export function CoffeeSelected() {
 
   function handleQuantityChange(coffeeId: string, quantity: number) {
     changeItemCartQuantity(coffeeId, quantity)
+  }
+
+  function handleRemove(coffeeId: string) {
+    removeItemFromCart(coffeeId)
   }
 
   return (
@@ -93,7 +98,10 @@ export function CoffeeSelected() {
                           />
                         </BuyCounterDiv>
                       </BuyCounterContainer>
-                      <ButtonRemove key={`BuyCounterDivMinus${item.coffeeId}`}>
+                      <ButtonRemove
+                        key={`BuyCounterDivMinus${item.coffeeId}`}
+                        onClick={() => handleRemove(item.coffeeId)}
+                      >
                         <Trash key={`Trash${item.coffeeId}`} size={'1rem'} />
                         Remover
                       </ButtonRemove>

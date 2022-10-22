@@ -38,6 +38,14 @@ export function cartReducer(state: ICartState, action: any) {
         coffeeIndex !== -1 && (draft.items[coffeeIndex].quantity = quantity)
       })
     }
+    case ActionTypes.REMOVE_ITEM_FROM_CART: {
+      const { coffeeId } = action.payload
+      return { items: state.items.filter((item) => item.coffeeId !== coffeeId) }
+      // return produce(state, (draft) => {
+      //   const { coffeeId } = action.payload
+      //   draft.items = draft.items.filter((item) => item.coffeeId !== coffeeId)
+      // })
+    }
     default:
       throw new Error()
   }

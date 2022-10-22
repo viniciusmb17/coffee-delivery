@@ -19,6 +19,7 @@ import {
 import {
   addToCartAction,
   changeItemCartQuantityAction,
+  removeItemFromCartAction,
 } from '../reducers/cart/actions'
 import { cartReducer, ICartState } from '../reducers/cart/reducer'
 
@@ -42,6 +43,7 @@ interface ICoffeeContextTypes {
   addToCart: (coffeeId: string, quantity: number) => void
   cart: ICartState
   changeItemCartQuantity: (coffeeId: string, quantity: number) => void
+  removeItemFromCart: (coffeeId: string) => void
 }
 
 interface ICoffeeContextProviderProps {
@@ -202,6 +204,10 @@ export function CoffeeContextProvider({
     dispatch(changeItemCartQuantityAction(coffeeId, quantity))
   }
 
+  function removeItemFromCart(coffeeId: string) {
+    dispatch(removeItemFromCartAction(coffeeId))
+  }
+
   return (
     <CoffeeContext.Provider
       value={{
@@ -210,6 +216,7 @@ export function CoffeeContextProvider({
         addToCart,
         cart,
         changeItemCartQuantity,
+        removeItemFromCart,
       }}
     >
       {children}

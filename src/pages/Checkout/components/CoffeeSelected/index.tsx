@@ -27,6 +27,9 @@ export function CoffeeSelected() {
   }
 
   function handleQuantityChange(coffeeId: string, quantity: number) {
+    if (quantity === 0) {
+      return handleRemove(coffeeId)
+    }
     changeItemCartQuantity(coffeeId, quantity)
   }
 
@@ -52,7 +55,11 @@ export function CoffeeSelected() {
             <>
               <CheckoutItem key={`CheckoutItem${item.coffeeId}`}>
                 <ItemInfo key={`ItemInfo${item.coffeeId}`}>
-                  <img src={coffee?.imageSrc} alt="" />
+                  <img
+                    key={`img${item.coffeeId}`}
+                    src={coffee?.imageSrc}
+                    alt=""
+                  />
                   <InfoDetails key={`InfoDetails${item.coffeeId}`}>
                     <InfoDetailsTitle key={`InfoDetailsTitle${item.coffeeId}`}>
                       {coffee?.name}
@@ -99,7 +106,7 @@ export function CoffeeSelected() {
                         </BuyCounterDiv>
                       </BuyCounterContainer>
                       <ButtonRemove
-                        key={`BuyCounterDivMinus${item.coffeeId}`}
+                        key={`ButtonRemove${item.coffeeId}`}
                         onClick={() => handleRemove(item.coffeeId)}
                       >
                         <Trash key={`Trash${item.coffeeId}`} size={'1rem'} />

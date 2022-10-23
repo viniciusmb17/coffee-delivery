@@ -25,6 +25,22 @@ import {
   CheckoutTotalDiv,
   CheckoutSummaryTotalSpan,
 } from './style'
+import * as zod from 'zod'
+import { zodResolver } from '@hookform/resolvers/zod'
+import { FormProvider, useForm } from 'react-hook-form'
+import { CheckoutForm } from './components/CheckoutForm'
+
+const checkoutFormValidationSchema = zod.object({
+  cep: zod.string().min(8, 'CEP inválido').max(8, 'CEP inválido'),
+  rua: zod.string().min(1, 'Informe a rua'),
+  num: zod.string().min(1, 'Informe o número'),
+  complemento: zod.string(),
+  bairro: zod.string().min(1, 'Informe o bairro'),
+  cidade: zod.string().min(1, 'Informe a cidade'),
+  uf: zod.string().min(1, 'Informe o UF'),
+})
+
+type CheckoutFormData = zod.infer<typeof checkoutFormValidationSchema>
 
 interface ISelectedPayment {
   type: 'credit' | 'debit' | 'cash'
@@ -32,7 +48,24 @@ interface ISelectedPayment {
 
 export function Checkout() {
   const navigate = useNavigate()
+
   const { coffees, cart } = useContext(CoffeeContext)
+
+  const checkoutForm = useForm<CheckoutFormData>({
+    resolver: zodResolver(checkoutFormValidationSchema),
+    defaultValues: {
+      cep: '',
+      rua: '',
+      num: '',
+      complemento: '',
+      bairro: '',
+      cidade: '',
+      uf: '',
+    },
+  })
+
+  const { handleSubmit, watch, reset } = checkoutForm
+
   const [selectedPayment, setSelectedPayment] = useState<ISelectedPayment>({
     type: 'credit',
   })
@@ -76,21 +109,7 @@ export function Checkout() {
             </div>
           </ArticleTitles>
           <form>
-            <input type="text" name="cep" placeholder="CEP" />
-            <input type="text" name="rua" placeholder="Rua" />
-            <div>
-              <input type="text" name="num" placeholder="Número" />
-              <input
-                type="text"
-                name="complemento"
-                placeholder="Complemento (Opcional)"
-              />
-            </div>
-            <div>
-              <input type="text" name="bairro" placeholder="Bairro" />
-              <input type="text" name="cidade" placeholder="Cidade" />
-              <input type="text" name="uf" placeholder="UF" />
-            </div>
+            <CheckoutForm />
           </form>
         </ShippingArticle>
         <PaymentArticle>

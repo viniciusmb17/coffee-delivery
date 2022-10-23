@@ -69,7 +69,7 @@ export const CheckoutContainer = styled.div`
       font-size: 0.875rem;
     }
 
-    form {
+    form > div {
       display: flex;
       flex-direction: column;
       align-items: flex-start;
@@ -78,39 +78,6 @@ export const CheckoutContainer = styled.div`
 
       width: 35rem;
       height: 13.5rem;
-
-      input {
-        height: 2.625rem;
-        background-color: ${(props) => props.theme['base-input']};
-        color: ${(props) => props.theme['base-text']};
-        border: 1px solid ${(props) => props.theme['base-button']};
-        padding: 0.75rem;
-        border-radius: 4px;
-      }
-
-      input[name='rua'] {
-        width: 35rem;
-      }
-
-      input[name='complemento'] {
-        width: 21.75rem;
-      }
-
-      input[name='cidade'] {
-        width: 17.25rem;
-      }
-
-      input[name='uf'] {
-        width: 3.75rem;
-      }
-
-      div {
-        display: flex;
-        flex-direction: row;
-        align-items: center;
-        padding: 0;
-        gap: 0.75rem;
-      }
     }
   }
 `

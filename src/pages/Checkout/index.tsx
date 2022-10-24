@@ -28,23 +28,26 @@ import {
 import * as zod from 'zod'
 import { zodResolver } from '@hookform/resolvers/zod'
 import { FormProvider, useForm } from 'react-hook-form'
-import { CheckoutForm } from './components/CheckoutForm'
+import { AddressForm } from './components/AddressForm'
 
 const checkoutFormValidationSchema = zod.object({
-  cep: zod.string().min(8, 'CEP inválido').max(8, 'CEP inválido'),
-  rua: zod.string().min(1, 'Informe a rua'),
-  num: zod.string().min(1, 'Informe o número'),
-  complemento: zod.string(),
-  bairro: zod.string().min(1, 'Informe o bairro'),
-  cidade: zod.string().min(1, 'Informe a cidade'),
-  uf: zod.string().min(1, 'Informe o UF'),
+  address: zod.object({
+    cep: zod.string().min(8, 'CEP inválido').max(8, 'CEP inválido'),
+    rua: zod.string().min(1, 'Informe a rua'),
+    num: zod.string().min(1, 'Informe o número'),
+    complemento: zod.string(),
+    bairro: zod.string().min(1, 'Informe o bairro'),
+    cidade: zod.string().min(1, 'Informe a cidade'),
+    uf: zod.string().min(1, 'Informe o UF'),
+  }),
+  payment: zod.object({
+    type: zod.enum(['credit', 'debit', 'cash']),
+  }),
 })
 
 type CheckoutFormData = zod.infer<typeof checkoutFormValidationSchema>
 
-interface ISelectedPayment {
-  type: 'credit' | 'debit' | 'cash'
-}
+type IPaymentType = CheckoutFormData['payment']
 
 export function Checkout() {
   const navigate = useNavigate()
@@ -54,23 +57,47 @@ export function Checkout() {
   const checkoutForm = useForm<CheckoutFormData>({
     resolver: zodResolver(checkoutFormValidationSchema),
     defaultValues: {
-      cep: '',
-      rua: '',
-      num: '',
-      complemento: '',
-      bairro: '',
-      cidade: '',
-      uf: '',
+      address: {
+        cep: '37950',
+        rua: 'Rua teste',
+        num: '123',
+        complemento: 'teste',
+        bairro: 'Bairro teste',
+        cidade: 'Cidade Teste',
+        uf: 'UF',
+      },
+      payment: {
+        type: 'credit',
+      },
     },
   })
 
-  const { handleSubmit, watch, reset } = checkoutForm
+  const { handleSubmit, reset } = checkoutForm
 
-  const [selectedPayment, setSelectedPayment] = useState<ISelectedPayment>({
-    type: 'credit',
-  })
+  function handleSubmitCheckoutForm(data: CheckoutFormData) {
+    console.log(data)
+    alert('Form submitted')
+    // alert(`
+    // Pedido confirmado!
+    // Dados de entrega:
+    // Cep: ${'cep'}
+    // Rua: ${'rua'}
+    // Número: ${'numero'}
+    // Complemento: ${'complemento'}
+    // Bairro: ${'bairro'}
+    // Cidade: ${'cidade'}
+    // UF: ${'uf'}
+    // `)
+    reset()
+    navigate('/success')
+  }
 
-  function handleChangePaymentCards(type: ISelectedPayment['type']) {
+  const [selectedPayment, setSelectedPayment] = useState<IPaymentType>(
+    { type: 'credit' },
+    // checkoutForm.getValues('payment'),
+  )
+
+  function handleChangePaymentCards(type: IPaymentType['type']) {
     setSelectedPayment({ type })
   }
 
@@ -97,85 +124,86 @@ export function Checkout() {
   const totalOrder = priceToString(deliveryCost + totalItems)
 
   return (
-    <CheckoutContainer>
-      <section>
-        <h1>Complete seu pedido</h1>
-        <ShippingArticle>
-          <ArticleTitles>
-            <MapPinLine size={22} />
-            <div>
-              <h2>Endereço de Entrega</h2>
-              <span>Informe o endereço onde deseja receber seu pedido</span>
-            </div>
-          </ArticleTitles>
-          <form>
-            <CheckoutForm />
-          </form>
-        </ShippingArticle>
-        <PaymentArticle>
-          <ArticleTitles>
-            <CurrencyDollar size={22} />
-            <div>
-              <h2>Pagamento</h2>
-              <span>
-                O pagamento é feito na entrega. Escolha a forma que deseja pagar
-              </span>
-            </div>
-          </ArticleTitles>
-          <PaymentCards>
-            <PaymentCard
-              selected={selectedPayment.type === 'credit'}
-              onClick={() => handleChangePaymentCards('credit')}
-            >
-              <CreditCard size={16} weight="light" />
-              <span>Cartão de crédito</span>
-            </PaymentCard>
-            <PaymentCard
-              selected={selectedPayment.type === 'debit'}
-              onClick={() => handleChangePaymentCards('debit')}
-            >
-              <Bank size={16} weight="light" />
-              <span>Cartão de débito</span>
-            </PaymentCard>
-            <PaymentCard
-              selected={selectedPayment.type === 'cash'}
-              onClick={() => handleChangePaymentCards('cash')}
-            >
-              <Money size={16} weight="light" />
-              <span>Dinheiro</span>
-            </PaymentCard>
-          </PaymentCards>
-        </PaymentArticle>
-      </section>
-      <aside>
-        <h1>Cafés selecionados</h1>
-        <CheckoutSummary>
-          <CheckoutItems>
-            <CoffeeSelected />
-          </CheckoutItems>
-          <CheckoutTotal>
-            <CheckoutTotalDiv>
-              <CheckoutSummarySpan>Total de itens</CheckoutSummarySpan>
-              <CheckoutSummaryPrice>
-                {`R$ ${priceToString(totalItems)}`}
-              </CheckoutSummaryPrice>
-            </CheckoutTotalDiv>
-            <CheckoutTotalDiv>
-              <CheckoutSummarySpan>Entrega</CheckoutSummarySpan>
-              <CheckoutSummaryPrice>{`R$ ${priceToString(
-                deliveryCost,
-              )}`}</CheckoutSummaryPrice>
-            </CheckoutTotalDiv>
-            <CheckoutTotalDiv>
-              <CheckoutSummaryTotalSpan>Total</CheckoutSummaryTotalSpan>
-              <CheckoutSummaryTotalSpan>{`R$ ${totalOrder}`}</CheckoutSummaryTotalSpan>
-            </CheckoutTotalDiv>
-          </CheckoutTotal>
-          <ButtonSubmit onClick={() => navigate('/success')}>
-            Confirmar Pedido
-          </ButtonSubmit>
-        </CheckoutSummary>
-      </aside>
-    </CheckoutContainer>
+    <form onSubmit={handleSubmit(handleSubmitCheckoutForm)}>
+      <CheckoutContainer>
+        <FormProvider {...checkoutForm}>
+          <section>
+            <h1>Complete seu pedido</h1>
+            <ShippingArticle>
+              <ArticleTitles>
+                <MapPinLine size={22} />
+                <div>
+                  <h2>Endereço de Entrega</h2>
+                  <span>Informe o endereço onde deseja receber seu pedido</span>
+                </div>
+              </ArticleTitles>
+              <AddressForm />
+            </ShippingArticle>
+            <PaymentArticle>
+              <ArticleTitles>
+                <CurrencyDollar size={22} />
+                <div>
+                  <h2>Pagamento</h2>
+                  <span>
+                    O pagamento é feito na entrega. Escolha a forma que deseja
+                    pagar
+                  </span>
+                </div>
+              </ArticleTitles>
+              <PaymentCards>
+                <PaymentCard
+                  selected={selectedPayment.type === 'credit'}
+                  onClick={() => handleChangePaymentCards('credit')}
+                >
+                  <CreditCard size={16} weight="light" />
+                  <span>Cartão de crédito</span>
+                </PaymentCard>
+                <PaymentCard
+                  selected={selectedPayment.type === 'debit'}
+                  onClick={() => handleChangePaymentCards('debit')}
+                >
+                  <Bank size={16} weight="light" />
+                  <span>Cartão de débito</span>
+                </PaymentCard>
+                <PaymentCard
+                  selected={selectedPayment.type === 'cash'}
+                  onClick={() => handleChangePaymentCards('cash')}
+                >
+                  <Money size={16} weight="light" />
+                  <span>Dinheiro</span>
+                </PaymentCard>
+              </PaymentCards>
+            </PaymentArticle>
+          </section>
+          <aside>
+            <h1>Cafés selecionados</h1>
+            <CheckoutSummary>
+              <CheckoutItems>
+                <CoffeeSelected />
+              </CheckoutItems>
+              <CheckoutTotal>
+                <CheckoutTotalDiv>
+                  <CheckoutSummarySpan>Total de itens</CheckoutSummarySpan>
+                  <CheckoutSummaryPrice>
+                    {`R$ ${priceToString(totalItems)}`}
+                  </CheckoutSummaryPrice>
+                </CheckoutTotalDiv>
+                <CheckoutTotalDiv>
+                  <CheckoutSummarySpan>Entrega</CheckoutSummarySpan>
+                  <CheckoutSummaryPrice>{`R$ ${priceToString(
+                    deliveryCost,
+                  )}`}</CheckoutSummaryPrice>
+                </CheckoutTotalDiv>
+                <CheckoutTotalDiv>
+                  <CheckoutSummaryTotalSpan>Total</CheckoutSummaryTotalSpan>
+                  <CheckoutSummaryTotalSpan>{`R$ ${totalOrder}`}</CheckoutSummaryTotalSpan>
+                </CheckoutTotalDiv>
+              </CheckoutTotal>
+              <ButtonSubmit type="submit">Confirmar Pedido</ButtonSubmit>
+            </CheckoutSummary>
+          </aside>
+        </FormProvider>
+      </CheckoutContainer>
+    </form>
   )
 }

@@ -1,6 +1,15 @@
 import styled from 'styled-components'
 
-export const CheckoutFormWrapper = styled.div`
+export const AddressFormWrapper = styled.div`
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  padding: 0;
+  gap: 1rem;
+
+  width: 35rem;
+  height: 13.5rem;
+
   input {
     height: 2.625rem;
     background-color: ${(props) => props.theme['base-input']};
@@ -10,19 +19,19 @@ export const CheckoutFormWrapper = styled.div`
     border-radius: 4px;
   }
 
-  input[name='rua'] {
+  input[name='address.rua'] {
     width: 35rem;
   }
 
-  input[name='complemento'] {
+  input[name='address.complemento'] {
     width: 21.75rem;
   }
 
-  input[name='cidade'] {
+  input[name='address.cidade'] {
     width: 17.25rem;
   }
 
-  input[name='uf'] {
+  input[name='address.uf'] {
     width: 3.75rem;
   }
 

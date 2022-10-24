@@ -68,17 +68,6 @@ export const CheckoutContainer = styled.div`
       color: ${(props) => props.theme['base-text']};
       font-size: 0.875rem;
     }
-
-    form > div {
-      display: flex;
-      flex-direction: column;
-      align-items: flex-start;
-      padding: 0;
-      gap: 1rem;
-
-      width: 35rem;
-      height: 13.5rem;
-    }
   }
 `
 

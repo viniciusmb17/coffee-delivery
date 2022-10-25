@@ -1,8 +1,12 @@
 import { useFormContext } from 'react-hook-form'
 import { AddressFormWrapper } from './style'
+import { ErrorMessage } from '@hookform/error-message'
 
 export function AddressForm() {
-  const { register } = useFormContext()
+  const {
+    register,
+    formState: { errors },
+  } = useFormContext()
 
   return (
     <AddressFormWrapper>
@@ -10,19 +14,24 @@ export function AddressForm() {
         type="text"
         id="cep"
         placeholder="CEP"
+        required
         {...register('address.cep')}
       />
+      <ErrorMessage errors={errors} name="address.cep" />
       <input
         type="text"
         id="rua"
         placeholder="Rua"
+        required
         {...register('address.rua')}
       />
+      <ErrorMessage errors={errors} name="address.rua" />
       <div>
         <input
           type="text"
           id="num"
           placeholder="Número"
+          required
           {...register('address.num')}
         />
         <input
@@ -37,6 +46,7 @@ export function AddressForm() {
           type="text"
           id="bairro"
           placeholder="Bairro"
+          required
           {...register('address.bairro')}
         />
         <input
@@ -49,6 +59,7 @@ export function AddressForm() {
           type="text"
           id="uf"
           placeholder="UF"
+          required
           style={{ textTransform: 'uppercase' }}
           {...register('address.uf')}
         />

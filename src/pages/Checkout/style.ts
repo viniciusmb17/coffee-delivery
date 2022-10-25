@@ -72,11 +72,9 @@ export const CheckoutContainer = styled.div`
 `
 
 export const ShippingArticle = styled.article`
-  height: 23.25rem;
   color: ${(props) => props.theme['yellow-dark']};
 `
 export const PaymentArticle = styled.article`
-  height: 12.9375rem;
   color: ${(props) => props.theme.purple};
 `
 

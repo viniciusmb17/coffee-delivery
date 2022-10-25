@@ -8,7 +8,7 @@ export const AddressFormWrapper = styled.div`
   gap: 1rem;
 
   width: 35rem;
-  height: 13.5rem;
+  min-height: 13.5rem;
 
   input {
     height: 2.625rem;

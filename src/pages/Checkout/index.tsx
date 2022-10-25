@@ -47,6 +47,7 @@ const checkoutFormValidationSchema = zod.object({
 
 type CheckoutFormData = zod.infer<typeof checkoutFormValidationSchema>
 
+// TODO: Incluir informações de pagamento e valores do pedido a partir do formulário com react-hook-form
 type IPaymentType = CheckoutFormData['payment']
 
 export function Checkout() {
@@ -58,13 +59,13 @@ export function Checkout() {
     resolver: zodResolver(checkoutFormValidationSchema),
     defaultValues: {
       address: {
-        cep: '37950',
-        rua: 'Rua teste',
-        num: '123',
-        complemento: 'teste',
-        bairro: 'Bairro teste',
-        cidade: 'Cidade Teste',
-        uf: 'UF',
+        cep: '',
+        rua: '',
+        num: '',
+        complemento: '',
+        bairro: '',
+        cidade: '',
+        uf: '',
       },
       payment: {
         type: 'credit',
@@ -75,19 +76,28 @@ export function Checkout() {
   const { handleSubmit, reset } = checkoutForm
 
   function handleSubmitCheckoutForm(data: CheckoutFormData) {
-    console.log(data)
-    alert('Form submitted')
-    // alert(`
-    // Pedido confirmado!
-    // Dados de entrega:
-    // Cep: ${'cep'}
-    // Rua: ${'rua'}
-    // Número: ${'numero'}
-    // Complemento: ${'complemento'}
-    // Bairro: ${'bairro'}
-    // Cidade: ${'cidade'}
-    // UF: ${'uf'}
-    // `)
+    const { address, payment } = data
+    alert(`
+    Pedido confirmado!
+    ___________________
+    Dados de entrega
+    Cep: ${address.cep}
+    Rua: ${address.rua}
+    Número: ${address.num}${
+      address.complemento.length !== 0 &&
+      `
+    Complemento: ${address.complemento}`
+    }
+    Bairro: ${address.bairro}
+    Cidade: ${address.cidade}
+    UF: ${address.uf}
+    ___________________
+    Pagamento: ${payment.type}
+    ___________________
+    Total de itens: R$ ${priceToString(totalItems)}
+    Entrega: R$ ${priceToString(deliveryCost)}
+    Total: R$ ${totalOrder}
+    `)
     reset()
     navigate('/success')
   }

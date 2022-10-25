@@ -11,6 +11,7 @@
     "lint-fix": "eslint src --ext .ts,.tsx --fix"
   },
   "dependencies": {
+    "@hookform/error-message": "^2.0.0",
     "@hookform/resolvers": "^2.9.10",
     "@types/styled-components": "^5.1.26",
     "@types/uuid": "^8.3.4",

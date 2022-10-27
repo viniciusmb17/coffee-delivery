@@ -8,7 +8,10 @@ import { Cart } from '../Cart'
 import { CoffeeContext } from '../../contexts/CoffeeContext'
 
 export function Header() {
-  const { cart } = useContext(CoffeeContext)
+  const {
+    cart,
+    order: { address },
+  } = useContext(CoffeeContext)
 
   return (
     <HeaderContainer>
@@ -19,7 +22,9 @@ export function Header() {
         <ActionsContainer>
           <LocationContainer>
             <MapPin size={22} weight="fill" />
-            <span>Porto Alegre, RS</span>
+            <span>
+              {address.cidade}, {address.uf}
+            </span>
           </LocationContainer>
           <Cart counter={cart.items.length} />
         </ActionsContainer>

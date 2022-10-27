@@ -18,7 +18,7 @@ import {
 
 export function Success() {
   const {
-    order: { address, payment },
+    order: { address, payment, created },
   } = useContext(CoffeeContext)
 
   const paymentTypeToString = (type: 'credit' | 'debit' | 'cash') => {
@@ -36,7 +36,7 @@ export function Success() {
 
   return (
     <SuccessContainer>
-      {address || payment ? (
+      {created ? (
         <>
           <MainTitles>
             <h1>Uhu! Pedido confirmado</h1>

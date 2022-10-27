@@ -46,6 +46,7 @@ const checkoutFormValidationSchema = zod.object({
   payment: zod.object({
     type: zod.enum(['credit', 'debit', 'cash']),
   }),
+  created: zod.boolean(),
 })
 
 export type CheckoutFormData = zod.infer<typeof checkoutFormValidationSchema>
@@ -53,7 +54,13 @@ export type CheckoutFormData = zod.infer<typeof checkoutFormValidationSchema>
 export function Checkout() {
   const navigate = useNavigate()
 
-  const { coffees, cart, resetCart, submitOrder } = useContext(CoffeeContext)
+  const {
+    coffees,
+    cart,
+    resetCart,
+    order: { address },
+    submitOrder,
+  } = useContext(CoffeeContext)
 
   const checkoutForm = useForm<CheckoutFormData>({
     resolver: zodResolver(checkoutFormValidationSchema),
@@ -64,12 +71,13 @@ export function Checkout() {
         num: '',
         complemento: '',
         bairro: '',
-        cidade: '',
-        uf: '',
+        cidade: address.cidade,
+        uf: address.uf,
       },
       payment: {
         type: 'credit',
       },
+      created: false,
     },
   })
 

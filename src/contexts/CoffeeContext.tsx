@@ -62,7 +62,21 @@ export const CoffeeContext = createContext({} as ICoffeeContextTypes)
 export function CoffeeContextProvider({
   children,
 }: ICoffeeContextProviderProps) {
-  const [order, orderDispatch] = useReducer(orderReducer, {})
+  const [order, orderDispatch] = useReducer(orderReducer, {
+    address: {
+      cep: '',
+      rua: '',
+      num: '',
+      complemento: '',
+      bairro: '',
+      cidade: 'Porto Alegre',
+      uf: 'RS',
+    },
+    payment: {
+      type: 'credit',
+    },
+    created: false,
+  })
   const [cart, cartDispatch] = useReducer(cartReducer, { items: [] })
   const coffeeTags = {
     tradicional: 'Tradicional',

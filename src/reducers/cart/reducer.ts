@@ -41,10 +41,9 @@ export function cartReducer(state: ICartState, action: any) {
     case ActionTypes.REMOVE_ITEM_FROM_CART: {
       const { coffeeId } = action.payload
       return { items: state.items.filter((item) => item.coffeeId !== coffeeId) }
-      // return produce(state, (draft) => {
-      //   const { coffeeId } = action.payload
-      //   draft.items = draft.items.filter((item) => item.coffeeId !== coffeeId)
-      // })
+    }
+    case ActionTypes.RESET_CART: {
+      return { items: [] }
     }
     default:
       throw new Error()

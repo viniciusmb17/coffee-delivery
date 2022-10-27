@@ -4,6 +4,7 @@ export enum ActionTypes {
   ADD_TO_CART = 'ADD_TO_CART',
   CHANGE_ITEM_CART_QUANTITY = 'CHANGE_ITEM_CART_QUANTITY',
   REMOVE_ITEM_FROM_CART = 'REMOVE_ITEM_FROM_CART',
+  RESET_CART = 'RESET_CART',
 }
 
 export function addToCartAction(coffeeId: string, quantity: number) {
@@ -27,5 +28,11 @@ export function removeItemFromCartAction(coffeeId: string) {
   return {
     type: ActionTypes.REMOVE_ITEM_FROM_CART,
     payload: { coffeeId },
+  }
+}
+
+export function resetCartAction() {
+  return {
+    type: ActionTypes.RESET_CART,
   }
 }

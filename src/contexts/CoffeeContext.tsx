@@ -16,12 +16,16 @@ import {
   MacchiatoImg,
   MochaccinoImg,
 } from '../assets/coffees'
+import { CheckoutFormData } from '../pages/Checkout'
 import {
   addToCartAction,
   changeItemCartQuantityAction,
   removeItemFromCartAction,
+  resetCartAction,
 } from '../reducers/cart/actions'
 import { cartReducer, ICartState } from '../reducers/cart/reducer'
+import { submitOrderAction } from '../reducers/order/actions'
+import { orderReducer } from '../reducers/order/reducer'
 
 interface ICoffeeContextTypes {
   coffees: {
@@ -44,6 +48,9 @@ interface ICoffeeContextTypes {
   cart: ICartState
   changeItemCartQuantity: (coffeeId: string, quantity: number) => void
   removeItemFromCart: (coffeeId: string) => void
+  order: CheckoutFormData
+  submitOrder: (orderInfo: CheckoutFormData) => void
+  resetCart: () => void
 }
 
 interface ICoffeeContextProviderProps {
@@ -55,7 +62,8 @@ export const CoffeeContext = createContext({} as ICoffeeContextTypes)
 export function CoffeeContextProvider({
   children,
 }: ICoffeeContextProviderProps) {
-  const [cart, dispatch] = useReducer(cartReducer, { items: [] })
+  const [order, orderDispatch] = useReducer(orderReducer, {})
+  const [cart, cartDispatch] = useReducer(cartReducer, { items: [] })
   const coffeeTags = {
     tradicional: 'Tradicional',
     especial: 'Especial',
@@ -197,15 +205,23 @@ export function CoffeeContextProvider({
   ])
 
   function addToCart(coffeeId: string, quantity: number) {
-    dispatch(addToCartAction(coffeeId, quantity))
+    cartDispatch(addToCartAction(coffeeId, quantity))
   }
 
   function changeItemCartQuantity(coffeeId: string, quantity: number) {
-    dispatch(changeItemCartQuantityAction(coffeeId, quantity))
+    cartDispatch(changeItemCartQuantityAction(coffeeId, quantity))
   }
 
   function removeItemFromCart(coffeeId: string) {
-    dispatch(removeItemFromCartAction(coffeeId))
+    cartDispatch(removeItemFromCartAction(coffeeId))
+  }
+
+  function resetCart() {
+    cartDispatch(resetCartAction())
+  }
+
+  function submitOrder(orderInfo: CheckoutFormData) {
+    orderDispatch(submitOrderAction(orderInfo))
   }
 
   return (
@@ -217,6 +233,9 @@ export function CoffeeContextProvider({
         cart,
         changeItemCartQuantity,
         removeItemFromCart,
+        resetCart,
+        order,
+        submitOrder,
       }}
     >
       {children}

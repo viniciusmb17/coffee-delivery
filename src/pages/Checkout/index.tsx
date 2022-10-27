@@ -32,7 +32,10 @@ import { AddressForm } from './components/AddressForm'
 
 const checkoutFormValidationSchema = zod.object({
   address: zod.object({
-    cep: zod.string().min(8, 'CEP inválido').max(8, 'CEP inválido'),
+    cep: zod
+      .string()
+      .min(8, 'Necessário 8 dígitos (apenas números).')
+      .max(8, 'Necessário 8 dígitos (apenas números).'),
     rua: zod.string().min(1, 'Informe a rua'),
     num: zod.string().min(1, 'Informe o número'),
     complemento: zod.string(),
@@ -45,7 +48,7 @@ const checkoutFormValidationSchema = zod.object({
   }),
 })
 
-type CheckoutFormData = zod.infer<typeof checkoutFormValidationSchema>
+export type CheckoutFormData = zod.infer<typeof checkoutFormValidationSchema>
 
 // TODO: Incluir informações de pagamento e valores do pedido a partir do formulário com react-hook-form
 type IPaymentType = CheckoutFormData['payment']
@@ -53,7 +56,7 @@ type IPaymentType = CheckoutFormData['payment']
 export function Checkout() {
   const navigate = useNavigate()
 
-  const { coffees, cart } = useContext(CoffeeContext)
+  const { coffees, cart, resetCart, submitOrder } = useContext(CoffeeContext)
 
   const checkoutForm = useForm<CheckoutFormData>({
     resolver: zodResolver(checkoutFormValidationSchema),
@@ -75,30 +78,15 @@ export function Checkout() {
 
   const { handleSubmit, reset } = checkoutForm
 
-  function handleSubmitCheckoutForm(data: CheckoutFormData) {
-    const { address, payment } = data
-    alert(`
-    Pedido confirmado!
-    ___________________
-    Dados de entrega
-    Cep: ${address.cep}
-    Rua: ${address.rua}
-    Número: ${address.num}${
-      address.complemento.length !== 0 &&
-      `
-    Complemento: ${address.complemento}`
-    }
-    Bairro: ${address.bairro}
-    Cidade: ${address.cidade}
-    UF: ${address.uf}
-    ___________________
-    Pagamento: ${payment.type}
-    ___________________
+  function handleSubmitCheckoutForm(order: CheckoutFormData) {
+    submitOrder(order)
+    resetCart()
+    reset()
+    alert(`Pedido confirmado!
     Total de itens: R$ ${priceToString(totalItems)}
     Entrega: R$ ${priceToString(deliveryCost)}
     Total: R$ ${totalOrder}
     `)
-    reset()
     navigate('/success')
   }
 

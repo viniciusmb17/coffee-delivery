@@ -5,7 +5,7 @@ import {
   MapPinLine,
   Money,
 } from 'phosphor-react'
-import { useContext, useState } from 'react'
+import { useContext } from 'react'
 import { useNavigate } from 'react-router-dom'
 import { CoffeeContext } from '../../contexts/CoffeeContext'
 import { CoffeeSelected } from './components/CoffeeSelected'
@@ -27,7 +27,7 @@ import {
 } from './style'
 import * as zod from 'zod'
 import { zodResolver } from '@hookform/resolvers/zod'
-import { FormProvider, useForm } from 'react-hook-form'
+import { Controller, FormProvider, useForm } from 'react-hook-form'
 import { AddressForm } from './components/AddressForm'
 
 const checkoutFormValidationSchema = zod.object({
@@ -49,9 +49,6 @@ const checkoutFormValidationSchema = zod.object({
 })
 
 export type CheckoutFormData = zod.infer<typeof checkoutFormValidationSchema>
-
-// TODO: Incluir informações de pagamento e valores do pedido a partir do formulário com react-hook-form
-type IPaymentType = CheckoutFormData['payment']
 
 export function Checkout() {
   const navigate = useNavigate()
@@ -76,7 +73,7 @@ export function Checkout() {
     },
   })
 
-  const { handleSubmit, reset } = checkoutForm
+  const { handleSubmit, reset, control, setValue } = checkoutForm
 
   function handleSubmitCheckoutForm(order: CheckoutFormData) {
     submitOrder(order)
@@ -88,15 +85,6 @@ export function Checkout() {
     Total: R$ ${totalOrder}
     `)
     navigate('/success')
-  }
-
-  const [selectedPayment, setSelectedPayment] = useState<IPaymentType>(
-    { type: 'credit' },
-    // checkoutForm.getValues('payment'),
-  )
-
-  function handleChangePaymentCards(type: IPaymentType['type']) {
-    setSelectedPayment({ type })
   }
 
   function priceToString(price: number) {
@@ -148,29 +136,37 @@ export function Checkout() {
                   </span>
                 </div>
               </ArticleTitles>
-              <PaymentCards>
-                <PaymentCard
-                  selected={selectedPayment.type === 'credit'}
-                  onClick={() => handleChangePaymentCards('credit')}
-                >
-                  <CreditCard size={16} weight="light" />
-                  <span>Cartão de crédito</span>
-                </PaymentCard>
-                <PaymentCard
-                  selected={selectedPayment.type === 'debit'}
-                  onClick={() => handleChangePaymentCards('debit')}
-                >
-                  <Bank size={16} weight="light" />
-                  <span>Cartão de débito</span>
-                </PaymentCard>
-                <PaymentCard
-                  selected={selectedPayment.type === 'cash'}
-                  onClick={() => handleChangePaymentCards('cash')}
-                >
-                  <Money size={16} weight="light" />
-                  <span>Dinheiro</span>
-                </PaymentCard>
-              </PaymentCards>
+              <Controller
+                control={control}
+                name="payment.type"
+                render={({ field }) => {
+                  return (
+                    <PaymentCards>
+                      <PaymentCard
+                        selected={field.value === 'credit'}
+                        onClick={() => setValue('payment.type', 'credit')}
+                      >
+                        <CreditCard size={16} weight="light" />
+                        <span>Cartão de crédito</span>
+                      </PaymentCard>
+                      <PaymentCard
+                        selected={field.value === 'debit'}
+                        onClick={() => setValue('payment.type', 'debit')}
+                      >
+                        <Bank size={16} weight="light" />
+                        <span>Cartão de débito</span>
+                      </PaymentCard>
+                      <PaymentCard
+                        selected={field.value === 'cash'}
+                        onClick={() => setValue('payment.type', 'cash')}
+                      >
+                        <Money size={16} weight="light" />
+                        <span>Dinheiro</span>
+                      </PaymentCard>
+                    </PaymentCards>
+                  )
+                }}
+              ></Controller>
             </PaymentArticle>
           </section>
           <aside>

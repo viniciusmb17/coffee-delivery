@@ -5,7 +5,8 @@ This is a project to simulate a Coffee Delivery ecommerce.
 - No payment methods implemented.
 
 ## In progress
-![](https://us-central1-progress-markdown.cloudfunctions.net/progress/40)
+![](https://us-central1-progress-markdown.cloudfunctions.net/progress/80)  
+Finishing the responsive design...
 
 ## Demo
 

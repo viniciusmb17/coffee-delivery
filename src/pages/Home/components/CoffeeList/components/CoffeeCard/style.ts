@@ -121,8 +121,8 @@ export const InputQuantity = styled.input.attrs((props) => ({
     margin: 0;
   }
   text-align: center;
-  width: 20px;
-  height: 21px;
+  width: 1.25rem;
+  height: 1.3125rem;
   border: 0;
   background-color: inherit;
 `

@@ -10,8 +10,8 @@ export const CoffeeListContainer = styled.section`
 export const CoffeeListHeader = styled.div`
   display: flex;
   column-gap: 32.5rem;
-  padding-left: 160px;
-  padding-right: 160px;
+  padding-left: 10rem;
+  padding-right: 10rem;
   white-space: nowrap;
 
   h1 {
@@ -38,6 +38,6 @@ export const CoffeeListCards = styled.div`
   grid-template-columns: repeat(4, 1fr);
   gap: 2.5rem;
   width: 70rem;
-  padding-left: 160px;
+  padding-left: 10rem;
   padding-bottom: 8rem;
 `

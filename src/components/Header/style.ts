@@ -3,7 +3,9 @@ import styled from 'styled-components'
 export const HeaderContainer = styled.header`
   position: sticky;
   top: 0;
-  width: 90rem;
+  max-width: 90rem;
+  width: 100%;
+  margin: auto;
   background: ${(props) => props.theme.background};
   display: flex;
   flex-direction: row;
@@ -23,7 +25,8 @@ export const HeaderContainer = styled.header`
     flex-direction: row;
     align-items: center;
     gap: 51.25rem;
-    width: 90rem;
+    max-width: 90rem;
+    width: 100%;
   }
 `
 export const ActionsContainer = styled.div`
@@ -44,7 +47,8 @@ export const LocationContainer = styled.div`
   flex-direction: row;
   align-items: center;
   justify-content: space-between;
-  width: fit-content;
+  max-width: fit-content;
+  width: 100%;
 
   font-family: 'Roboto', sans-serif;
   font-style: normal;

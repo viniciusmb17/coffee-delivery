@@ -17,7 +17,7 @@ export const BaseSection = styled.section`
   width: 100%;
 `
 export const IntroSection = styled(BaseSection)`
-  margin-left: 160px;
+  margin-left: 10rem;
 `
 export const ImageSection = styled(BaseSection)`
   img {

@@ -1,7 +1,6 @@
 import styled, { css } from 'styled-components'
 
 export const CheckoutContainer = styled.div`
-  /* height: calc(100vh - 6.5rem); */
   display: flex;
   flex-direction: row;
   justify-content: center;
@@ -23,7 +22,8 @@ export const CheckoutContainer = styled.div`
     display: flex;
     flex-direction: column;
     align-items: flex-start;
-    width: 40rem;
+    max-width: 40rem;
+    width: 100%;
     height: 36.9375rem;
 
     padding: 0;
@@ -46,7 +46,8 @@ export const CheckoutContainer = styled.div`
     background-color: ${(props) => props.theme['base-card']};
 
     gap: 2rem;
-    width: 40rem;
+    max-width: 40rem;
+    width: 100%;
     border-radius: 6px;
 
     h2,
@@ -98,7 +99,8 @@ export const PaymentCard = styled.div<IPaymentCardProps>`
   padding: 1rem;
   gap: 0.75rem;
 
-  width: 11.1669rem;
+  max-width: 11.1669rem;
+  width: 100%;
   height: 3.1875rem;
 
   border-radius: 6px;
@@ -136,7 +138,8 @@ export const ArticleTitles = styled.div`
   padding: 0;
   gap: 0.5rem;
 
-  width: 35rem;
+  max-width: 35rem;
+  width: 100%;
   height: 2.75rem;
 `
 
@@ -146,7 +149,8 @@ export const CheckoutSummary = styled.div`
   align-items: flex-start;
   padding: 2.5rem;
   gap: 1.5rem;
-  width: 28rem;
+  max-width: 28rem;
+  width: 100%;
   border-radius: 6px 44px;
   background-color: ${(props) => props.theme['base-card']};
 `
@@ -163,7 +167,8 @@ export const CheckoutTotal = styled.div`
   padding: 0;
   gap: 0.75rem;
 
-  width: 23rem;
+  max-width: 23rem;
+  width: 100%;
   height: 5.75rem;
 
   flex: none;
@@ -217,7 +222,8 @@ export const ButtonSubmit = styled.button`
   padding: 0.75rem 0.5rem;
   gap: 0.25rem;
 
-  width: 23rem;
+  max-width: 23rem;
+  width: 100%;
   height: 2.875rem;
 
   border: 0;

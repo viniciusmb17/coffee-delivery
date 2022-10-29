@@ -1,4 +1,4 @@
-import { createContext, ReactNode, useMemo, useReducer } from 'react'
+import { createContext, ReactNode, useEffect, useMemo, useReducer } from 'react'
 import { v4 as uuidv4 } from 'uuid'
 import {
   AmericanoImg,
@@ -77,7 +77,23 @@ export function CoffeeContextProvider({
     },
     created: false,
   })
-  const [cart, cartDispatch] = useReducer(cartReducer, { items: [] })
+  const [cart, cartDispatch] = useReducer(
+    cartReducer,
+    {
+      items: [],
+    },
+    () => {
+      const storedStateAsJSON = localStorage.getItem(
+        '@coffee-delivery:cart-1.0.0',
+      )
+
+      if (storedStateAsJSON) {
+        return JSON.parse(storedStateAsJSON)
+      }
+
+      return { items: [] }
+    },
+  )
   const coffeeTags = {
     tradicional: 'Tradicional',
     especial: 'Especial',
@@ -217,6 +233,12 @@ export function CoffeeContextProvider({
     coffeeTags.quente,
     coffeeTags.tradicional,
   ])
+
+  useEffect(() => {
+    const stateJSON = JSON.stringify(cart)
+
+    localStorage.setItem('@coffee-delivery:cart-1.0.0', stateJSON)
+  }, [cart])
 
   function addToCart(coffeeId: string, quantity: number) {
     cartDispatch(addToCartAction(coffeeId, quantity))

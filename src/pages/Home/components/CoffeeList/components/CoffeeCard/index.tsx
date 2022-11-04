@@ -45,7 +45,8 @@ export function CoffeeCard({
   function handleCoffeeQuantityChange(e: React.ChangeEvent<HTMLInputElement>) {
     e.preventDefault()
     const { value } = e.target
-    setCoffeeQuantity(Number(value))
+    const quantity = Number(value) <= 0 ? 1 : Number(value)
+    setCoffeeQuantity(quantity)
   }
 
   function incrementCoffeeQuantity() {
@@ -54,7 +55,7 @@ export function CoffeeCard({
 
   function decrementCoffeeQuantity() {
     setCoffeeQuantity((prevState) =>
-      prevState > 0 ? prevState - 1 : prevState,
+      prevState > 1 ? prevState - 1 : prevState,
     )
   }
 

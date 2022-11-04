@@ -16,6 +16,12 @@ export const CoffeeCardContainer = styled.div`
     margin-bottom: 0.75rem;
     width: 7.5rem;
     height: 7.5rem;
+    -webkit-touch-callout: none; /* iPhone OS, Safari */
+    -webkit-user-select: none; /* Chrome, Safari 3 */
+    -khtml-user-select: none; /* Safari 2 */
+    -moz-user-select: none; /* Firefox */
+    -ms-user-select: none; /* IE10+ */
+    user-select: none;
   }
 
   h2 {
@@ -154,4 +160,10 @@ export const TagsContainer = styled.div`
   padding: 0;
   gap: 0.25rem;
   align-items: center;
+  -webkit-touch-callout: none; /* iPhone OS, Safari */
+  -webkit-user-select: none; /* Chrome, Safari 3 */
+  -khtml-user-select: none; /* Safari 2 */
+  -moz-user-select: none; /* Firefox */
+  -ms-user-select: none; /* IE10+ */
+  user-select: none;
 `

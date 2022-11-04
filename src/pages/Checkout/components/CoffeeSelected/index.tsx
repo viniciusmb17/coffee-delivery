@@ -27,7 +27,7 @@ export function CoffeeSelected() {
   }
 
   function handleQuantityChange(coffeeId: string, quantity: number) {
-    if (quantity === 0) {
+    if (quantity <= 0) {
       return handleRemove(coffeeId)
     }
     changeItemCartQuantity(coffeeId, quantity)

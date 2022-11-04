@@ -34,6 +34,13 @@ export const CheckoutItem = styled.div`
     flex: none;
     order: 1;
     flex-grow: 0;
+
+    -webkit-touch-callout: none; /* iPhone OS, Safari */
+    -webkit-user-select: none; /* Chrome, Safari 3 */
+    -khtml-user-select: none; /* Safari 2 */
+    -moz-user-select: none; /* Firefox */
+    -ms-user-select: none; /* IE10+ */
+    user-select: none;
   }
 `
 export const ItemInfo = styled.div`
@@ -118,6 +125,13 @@ export const ButtonRemove = styled.button`
   :hover {
     background-color: ${(props) => props.theme['base-hover']};
   }
+
+  -webkit-touch-callout: none; /* iPhone OS, Safari */
+  -webkit-user-select: none; /* Chrome, Safari 3 */
+  -khtml-user-select: none; /* Safari 2 */
+  -moz-user-select: none; /* Firefox */
+  -ms-user-select: none; /* IE10+ */
+  user-select: none;
 `
 
 export const BuyCounterContainer = styled.div`

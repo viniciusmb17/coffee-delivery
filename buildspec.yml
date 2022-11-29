@@ -1,0 +1,23 @@
+version: 0.2
+
+phases:
+  install:
+    commands:
+      - echo Installing Node 19...
+      - curl -fsSL https://deb.nodesource.com/setup_19.x | bash - &&\
+      - apt install -y nodejs
+      - echo Enabling corepack for Yarn...
+      - corepack enable
+    pre_build:
+      commands:
+        #install dependencies
+      - yarn
+    build:
+      commands:
+        - echo Building...
+        - yarn build
+artifacts:
+  files:
+    - "**/*"
+  discard-paths: no
+  base-directory: dist
